@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ParkTimer</string>
+    <string name="app_header">🅿 ParkTimer</string>
+
+    <!-- Main screen -->
+    <string name="select_duration">Parkdauer auswählen</string>
+    <string name="minutes_15">15 Minuten</string>
+    <string name="minutes_30">30 Minuten</string>
+    <string name="minutes_60">60 Minuten</string>
+    <string name="minutes_90">90 Minuten</string>
+    <string name="minutes_120">120 Minuten</string>
+
+    <!-- Timer screen -->
+    <string name="timer_running">⏱ Parkzeit läuft…</string>
+    <string name="timer_warning">⚠️ Nur noch 10 Minuten!</string>
+    <string name="timer_alert">🚨 Parkzeit abgelaufen!</string>
+    <string name="remaining">verbleibend</string>
+    <string name="btn_reset">Zurücksetzen</string>
+    <string name="btn_stop">Stopp</string>
+
+    <!-- Notifications -->
+    <string name="notification_timer_title">Parkzeit: %1$s verbleibend</string>
+    <string name="notification_warning_title">⚠️ Nur noch %1$s!</string>
+    <string name="notification_alert_title">🚨 Parkzeit abgelaufen!</string>
+    <string name="notification_alert_text">Bitte sofort zum Fahrzeug zurückkehren!</string>
+    <string name="notification_tap_to_open">Tippen zum Öffnen</string>
+
+    <!-- Android Auto strings -->
+    <string name="car_timer_running">Verbleibende Parkzeit:\n%1$s</string>
+    <string name="car_timer_warning">⚠️ Nur noch %1$s!\n\nBitte jetzt zum Fahrzeug zurückkehren.</string>
+    <string name="car_timer_alert">🚨 Parkzeit abgelaufen!\n\nBitte sofort zum Fahrzeug zurückkehren!</string>
+</resources>

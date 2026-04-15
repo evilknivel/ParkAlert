@@ -1,0 +1,36 @@
+### Android ###
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+*.apk
+*.aab
+*.ap_
+
+# Android Studio generated files
+*.orig
+
+# Keystore files – NEVER commit these!
+*.jks
+*.keystore
+release.properties
+
+# Gradle cache and wrapper JAR (users download it on first build)
+gradle/wrapper/gradle-wrapper.jar
+
+# Google Services (contains API keys)
+google-services.json
+
+# Lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+
+# node_modules (if any JS tooling is added later)
+node_modules/

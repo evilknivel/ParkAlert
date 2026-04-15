@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Parking icon: blue circle with white letter P.
+    Used as the grid item icon in the Android Auto SelectDurationScreen.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Blue circular background -->
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2z" />
+
+    <!-- White "P" letterform -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M9,7h3.5C14.43,7 16,8.57 16,10.5S14.43,14 12.5,14H11v4H9V7z
+                          M11,12h1.5c0.83,0 1.5,-0.67 1.5,-1.5S13.33,9 12.5,9H11v3z" />
+</vector>

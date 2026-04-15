@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Green palette (normal timer state) -->
+    <color name="green_primary">#43A047</color>
+    <color name="green_dark">#1B5E20</color>
+    <color name="green_medium">#388E3C</color>
+    <color name="green_light">#E8F5E9</color>
+
+    <!-- Warning state (10 minutes remaining) -->
+    <color name="yellow_warning">#FFF9C4</color>
+    <color name="yellow_dark">#E65100</color>
+
+    <!-- Alert state (time is up) -->
+    <color name="red_alert">#EF5350</color>
+    <color name="red_light">#FFCDD2</color>
+    <color name="red_dark">#B71C1C</color>
+
+    <!-- Generic -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_light"
+    android:fillViewport="true"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
+
+        <!-- App header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/app_header"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="@color/green_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/select_duration"
+            android:textSize="18sp"
+            android:textColor="@color/green_medium" />
+
+        <!-- Duration buttons -->
+        <Button
+            android:id="@+id/btn15min"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/minutes_15"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/green_primary" />
+
+        <Button
+            android:id="@+id/btn30min"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/minutes_30"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/green_primary" />
+
+        <Button
+            android:id="@+id/btn60min"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/minutes_60"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/green_primary" />
+
+        <Button
+            android:id="@+id/btn90min"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/minutes_90"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/green_primary" />
+
+        <Button
+            android:id="@+id/btn120min"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/minutes_120"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/green_primary" />
+
+    </LinearLayout>
+</ScrollView>

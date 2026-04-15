@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Declares this app as an Android Auto template app.
+    The "template" use means it uses the Car App Library (not media/messaging).
+-->
+<automotiveApp>
+    <uses name="template"/>
+</automotiveApp>

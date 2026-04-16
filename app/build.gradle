@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'de.parktimer.app'
+    namespace 'de.parkalert.app'
     compileSdk 34
 
     defaultConfig {
-        applicationId "de.parktimer.app"
+        applicationId "de.parkalert.app"
         minSdk 26
         targetSdk 34
         versionCode 1
@@ -35,6 +35,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig true   // needed for BuildConfig.DEBUG guards in ConsentManager / ad init
     }
 }
 
@@ -55,4 +56,15 @@ dependencies {
     // Lifecycle
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.7.0'
+
+    // Google Mobile Ads SDK (AdMob)
+    // TODO: Update to latest stable before publishing
+    implementation 'com.google.android.gms:play-services-ads:23.2.0'
+
+    // Google User Messaging Platform (UMP) – GDPR / IAB TCF 2.2 consent
+    // TODO: Update to latest stable before publishing
+    implementation 'com.google.android.ump:user-messaging-platform:2.2.0'
+
+    // Unit tests
+    testImplementation 'junit:junit:4.13.2'
 }

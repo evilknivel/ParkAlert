@@ -1,15 +1,16 @@
-package de.parktimer.app.automotive
+package de.parkalert.app.automotive
 
 import androidx.car.app.CarContext
 import androidx.car.app.Screen
 import androidx.car.app.model.*
 import androidx.core.graphics.drawable.IconCompat
-import de.parktimer.app.R
+import de.parkalert.app.R
 
 /**
  * Car app screen that shows a 5-item grid for parking duration selection.
  *
- * Displayed as the first screen when the user opens ParkTimer via Android Auto.
+ * Displayed as the first screen when the user opens ParkAlert via Android Auto.
+ * No ads are shown on this screen – Google Car App policy prohibits ads on Auto.
  */
 class SelectDurationScreen(carContext: CarContext) : Screen(carContext) {
 

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Default strings – English.
-    German overrides live in res/values-de/strings.xml.
-    Non-translatable strings (AdMob IDs) are declared here only.
+    Explicit English (en) strings.
+    These are identical to the default res/values/strings.xml so that
+    devices set to a specific English locale (en-US, en-GB, etc.) always
+    get English text even if the default locale resolves differently.
+    Non-translatable strings (AdMob IDs) are intentionally omitted here.
 -->
 <resources>
     <string name="app_name">ParkAlert</string>
     <string name="app_header">🅿 ParkAlert</string>
 
-    <!-- Main screen -->
     <string name="select_duration">Select parking duration</string>
     <string name="minutes_15">15 Min</string>
     <string name="minutes_30">30 Min</string>
@@ -16,7 +17,6 @@
     <string name="minutes_90">90 Min</string>
     <string name="minutes_120">120 Min</string>
 
-    <!-- Timer screen status / labels -->
     <string name="timer_running">⏱ ParkAlert running…</string>
     <string name="timer_warning">⚠️ Warning: 10 minutes left!</string>
     <string name="timer_alert">🚨 Time is up!</string>
@@ -24,12 +24,10 @@
     <string name="btn_reset">Reset</string>
     <string name="btn_stop">Stop</string>
 
-    <!-- Timer timestamps -->
     <string name="timer_started_at">Started: %1$s</string>
     <string name="timer_ended_at">Expired: %1$s</string>
     <string name="overtime_label">Overtime</string>
 
-    <!-- Notifications -->
     <string name="notification_timer_title">ParkAlert running – %1$s remaining</string>
     <string name="notification_warning_title">⚠️ Only 10 minutes of parking left!</string>
     <string name="notification_alert_title">🚨 Parking time expired!</string>
@@ -37,23 +35,19 @@
     <string name="notification_overtime_title">🚨 +%1$s overtime!</string>
     <string name="notification_tap_to_open">Tap to open</string>
 
-    <!-- Notification channel names (shown in system settings) -->
     <string name="notification_channel_timer_name">ParkAlert – Running</string>
     <string name="notification_channel_timer_desc">Shows the remaining parking time</string>
     <string name="notification_channel_alert_name">ParkAlert – Alert</string>
     <string name="notification_channel_alert_desc">Alert when parking time expires</string>
 
-    <!-- Android Auto strings -->
     <string name="car_timer_running">Remaining parking time:\n%1$s</string>
     <string name="car_timer_warning">⚠️ Only %1$s left!\n\nPlease return to your vehicle now.</string>
     <string name="car_timer_alert">🚨 Time is up!\n\nPlease return to your vehicle immediately!</string>
-    <!-- Short forms used in TimerScreen message building (timestamps are appended separately) -->
     <string name="car_timer_alert_expired">🚨 Time is up!</string>
     <string name="car_timer_overtime">🚨 +%1$s overtime!</string>
     <string name="car_started_at">Started: %1$s</string>
     <string name="car_ended_at">Expired: %1$s</string>
 
-    <!-- Settings screen -->
     <string name="settings_title">Settings</string>
     <string name="settings_button_desc">Open settings</string>
     <string name="settings_section_privacy">PRIVACY</string>
@@ -63,29 +57,12 @@
     <string name="settings_app_version">App Version: %1$s</string>
     <string name="settings_licenses">Licenses</string>
 
-    <!-- Consent not required (outside EEA) -->
     <string name="consent_not_required_title">Consent</string>
     <string name="consent_not_required_message">Consent to data processing is not required for your region. The app uses Google AdMob to display advertising.</string>
 
-    <!-- Privacy policy screen -->
     <string name="privacy_policy_title">Privacy Policy</string>
-    <!-- Asset filename – overridden per locale in values-de/ etc. -->
     <string name="privacy_policy_asset">privacy_policy_en.html</string>
 
-    <!-- Open source licenses -->
     <string name="licenses_text">This app uses the following open source libraries:\n\n\u2022 AndroidX AppCompat \u2013 Apache License 2.0\n\u2022 AndroidX ConstraintLayout \u2013 Apache License 2.0\n\u2022 Material Components for Android \u2013 Apache License 2.0\n\u2022 Android Car App Library \u2013 Apache License 2.0\n\u2022 Kotlin Standard Library \u2013 Apache License 2.0\n\u2022 kotlinx.coroutines \u2013 Apache License 2.0\n\u2022 Google Mobile Ads SDK \u2013 Google APIs Terms of Service\n\u2022 Google User Messaging Platform \u2013 Google APIs Terms of Service\n\nFull license texts: https://opensource.org/licenses/Apache-2.0</string>
-
-    <!--
-        AdMob IDs (non-translatable – only declared here, not in locale folders).
-        TODO: Replace BOTH values below with your real AdMob IDs before publishing.
-        Steps:
-          1. Create an AdMob account at https://admob.google.com
-          2. Create a new App → copy the App ID → replace admob_app_id
-          3. Create a Banner Ad Unit → replace admob_banner_main and admob_banner_timer
-        The IDs below are Google's official TEST IDs – safe for development only.
-    -->
-    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511913</string>
-    <string name="admob_banner_main" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="admob_banner_timer" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
 
 </resources>

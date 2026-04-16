@@ -1,4 +1,4 @@
-package de.parktimer.app
+package de.parkalert.app
 
 import android.app.*
 import android.content.Intent
@@ -14,6 +14,12 @@ class TimerService : Service() {
     private var countDownTimer: CountDownTimer? = null
     private var remainingMillis: Long = 0
     private var currentState: Int = Constants.TIMER_STATE_STOPPED
+
+    private var startTimeMillis: Long = 0L
+    private var endTimeMillis: Long = 0L
+    private var overtimeMillis: Long = 0L
+    private val overtimeHandler = Handler(Looper.getMainLooper())
+    private var overtimeRunnable: Runnable? = null
 
     // -------------------------------------------------------------------------
     // Lifecycle
@@ -35,6 +41,7 @@ class TimerService : Service() {
     }
 
     override fun onDestroy() {
+        cancelOvertime()
         countDownTimer?.cancel()
         super.onDestroy()
     }
@@ -44,11 +51,14 @@ class TimerService : Service() {
     // -------------------------------------------------------------------------
 
     private fun launchTimer(durationMillis: Long) {
+        cancelOvertime()
         countDownTimer?.cancel()
+        startTimeMillis = System.currentTimeMillis()
+        endTimeMillis = 0L
+        overtimeMillis = 0L
         remainingMillis = durationMillis
         currentState = Constants.TIMER_STATE_RUNNING
 
-        // Start as foreground service immediately
         val notification = buildTimerNotification(durationMillis, currentState)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             startForeground(
@@ -72,44 +82,63 @@ class TimerService : Service() {
                 }
                 currentState = newState
 
-                // Update persistent notification
                 val nm = getSystemService(NotificationManager::class.java)
                 nm.notify(Constants.NOTIFICATION_ID_TIMER, buildTimerNotification(millisUntilFinished, newState))
 
-                // Inform UI
                 broadcast(millisUntilFinished, newState)
             }
 
             override fun onFinish() {
-                remainingMillis = 0
+                endTimeMillis = System.currentTimeMillis()
+                remainingMillis = 0L
                 currentState = Constants.TIMER_STATE_ALERT
 
                 broadcast(0L, Constants.TIMER_STATE_ALERT)
                 triggerAlert()
-
-                @Suppress("DEPRECATION")
-                stopForeground(true)
-                stopSelf()
+                startOvertimeCounter()
+                // Service stays alive — overtime counter keeps it running
             }
         }.start()
+    }
+
+    private fun startOvertimeCounter() {
+        overtimeMillis = 0L
+        val nm = getSystemService(NotificationManager::class.java)
+
+        val runnable = object : Runnable {
+            override fun run() {
+                overtimeMillis += 1_000L
+                nm.notify(Constants.NOTIFICATION_ID_TIMER, buildOvertimeNotification(overtimeMillis))
+                broadcast(-overtimeMillis, Constants.TIMER_STATE_ALERT)
+                overtimeHandler.postDelayed(this, 1_000L)
+            }
+        }
+        overtimeRunnable = runnable
+        nm.notify(Constants.NOTIFICATION_ID_TIMER, buildOvertimeNotification(0L))
+        overtimeHandler.postDelayed(runnable, 1_000L)
+    }
+
+    private fun cancelOvertime() {
+        overtimeRunnable?.let { overtimeHandler.removeCallbacks(it) }
+        overtimeRunnable = null
     }
 
     private fun broadcast(millis: Long, state: Int) {
         sendBroadcast(Intent(Constants.ACTION_TIMER_UPDATE).apply {
             putExtra(Constants.EXTRA_REMAINING_MILLIS, millis)
             putExtra(Constants.EXTRA_TIMER_STATE, state)
-            setPackage(packageName) // restrict to our app
+            putExtra(Constants.EXTRA_START_TIME_MILLIS, startTimeMillis)
+            putExtra(Constants.EXTRA_END_TIME_MILLIS, endTimeMillis)
+            setPackage(packageName)
         })
     }
 
     private fun triggerAlert() {
-        // High-priority notification with alarm sound
-        val pendingIntent = pendingActivityIntent()
         val notification = NotificationCompat.Builder(this, Constants.CHANNEL_ID_ALERT)
             .setContentTitle(getString(R.string.notification_alert_title))
             .setContentText(getString(R.string.notification_alert_text))
             .setSmallIcon(android.R.drawable.ic_dialog_alert)
-            .setContentIntent(pendingIntent)
+            .setContentIntent(pendingActivityIntent())
             .setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setCategory(NotificationCompat.CATEGORY_ALARM)
@@ -119,7 +148,6 @@ class TimerService : Service() {
         val nm = getSystemService(NotificationManager::class.java)
         nm.notify(Constants.NOTIFICATION_ID_ALERT, notification)
 
-        // Vibrate
         vibrate()
     }
 
@@ -144,7 +172,7 @@ class TimerService : Service() {
     private fun buildTimerNotification(millisRemaining: Long, state: Int): Notification {
         val timeText = formatTime(millisRemaining)
         val title = when (state) {
-            Constants.TIMER_STATE_WARNING -> getString(R.string.notification_warning_title, timeText)
+            Constants.TIMER_STATE_WARNING -> getString(R.string.notification_warning_title)
             else                          -> getString(R.string.notification_timer_title, timeText)
         }
 
@@ -159,9 +187,27 @@ class TimerService : Service() {
             .build()
     }
 
+    private fun buildOvertimeNotification(overtimeMs: Long): Notification {
+        val timeText = formatTime(overtimeMs)
+        val title = getString(R.string.notification_overtime_title, timeText)
+
+        return NotificationCompat.Builder(this, Constants.CHANNEL_ID_TIMER)
+            .setContentTitle(title)
+            .setContentText(getString(R.string.notification_tap_to_open))
+            .setSmallIcon(android.R.drawable.ic_dialog_alert)
+            .setContentIntent(pendingActivityIntent())
+            .setOngoing(true)
+            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
+            .build()
+    }
+
     private fun pendingActivityIntent(): PendingIntent {
         val intent = Intent(this, TimerActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            putExtra(Constants.EXTRA_TIMER_STATE, currentState)
+            putExtra(Constants.EXTRA_START_TIME_MILLIS, startTimeMillis)
+            putExtra(Constants.EXTRA_END_TIME_MILLIS, endTimeMillis)
         }
         return PendingIntent.getActivity(
             this, 0, intent,
@@ -172,17 +218,15 @@ class TimerService : Service() {
     private fun createNotificationChannels() {
         val nm = getSystemService(NotificationManager::class.java)
 
-        // Low-importance channel for ongoing timer
         val timerChannel = NotificationChannel(
             Constants.CHANNEL_ID_TIMER,
-            "ParkTimer – Laufzeit",
+            getString(R.string.notification_channel_timer_name),
             NotificationManager.IMPORTANCE_LOW
         ).apply {
-            description = "Zeigt die verbleibende Parkzeit an"
+            description = getString(R.string.notification_channel_timer_desc)
             setShowBadge(false)
         }
 
-        // High-importance channel for the alarm at 0 minutes
         val alertSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
         val audioAttr = AudioAttributes.Builder()
             .setUsage(AudioAttributes.USAGE_ALARM)
@@ -191,10 +235,10 @@ class TimerService : Service() {
 
         val alertChannel = NotificationChannel(
             Constants.CHANNEL_ID_ALERT,
-            "ParkTimer – Alarm",
+            getString(R.string.notification_channel_alert_name),
             NotificationManager.IMPORTANCE_HIGH
         ).apply {
-            description = "Alarm wenn die Parkzeit abgelaufen ist"
+            description = getString(R.string.notification_channel_alert_desc)
             setSound(alertSound, audioAttr)
             enableVibration(true)
             vibrationPattern = longArrayOf(0, 600, 200, 600, 200, 600, 200, 1200)

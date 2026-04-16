@@ -1,0 +1,46 @@
+🅿 ParkAlert – Never get a parking ticket at the supermarket again!
+
+You know how it goes: you pop in for a quick shop at the supermarket and come back to find a parking fine under your windscreen wiper. ParkAlert reminds you before your parking time runs out.
+
+──────────────────────────────
+HOW IT WORKS
+──────────────────────────────
+1. Open the app
+2. Select your parking duration: 15, 30, 60, 90 or 120 minutes
+3. Go shopping – ParkAlert runs in the background
+4. At 10 minutes remaining: warning alert!
+5. At 0 minutes: alarm + vibration
+
+──────────────────────────────
+FEATURES
+──────────────────────────────
+✅ 5 quick-select buttons: 15 / 30 / 60 / 90 / 120 minutes
+✅ Large countdown display – easy to read even in bright sunlight
+✅ Colour feedback: Green → Yellow (10 min) → Red (expired)
+✅ Keeps running with screen locked (Foreground Service)
+✅ Alarm notification + vibration when time expires
+✅ Overtime display: shows how long you've been over the limit
+✅ Android Auto support
+✅ Free – ad-supported with GDPR-compliant consent
+✅ No account, no registration, no cloud
+
+──────────────────────────────
+PERFECT FOR
+──────────────────────────────
+• Supermarket car parks and retail parking lots
+• Time-limited parking zones
+• Short-stay city centre parking
+• Anywhere with a maximum parking duration
+• Shopping centres and retail parks
+
+──────────────────────────────
+PRIVACY
+──────────────────────────────
+The app displays advertising via Google AdMob. On first launch you will be asked for your consent (GDPR / IAB TCF 2.2). You can say no at any time – the app works fully without consent. Your consent can be changed at any time in Settings.
+
+No location data collected. No usage tracking by the app developer.
+
+──────────────────────────────
+KEYWORDS
+──────────────────────────────
+parking timer, supermarket parking, parking limit, car park, parking alert, retail parking, parking reminder, free parking, 90 minutes, parking warden, parking ticket, shopping timer, Android Auto

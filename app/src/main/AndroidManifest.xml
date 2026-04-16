@@ -8,6 +8,17 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+    <!-- AdMob / UMP: network access for loading ads and consent form -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!--
+        Android 13+ Advertising ID permission.
+        Required when using AdMob on API 33+. Users who opt out of personalised ads
+        will receive a zeroed-out ID; the SDK handles this automatically.
+    -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+
     <!-- Android Auto: mark automotive as optional so the app also runs on phones -->
     <uses-feature
         android:name="android.hardware.type.automotive"
@@ -20,6 +31,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkTimer">
+
+        <!--
+            AdMob Application ID.
+            TODO: Replace the test App ID below with your real AdMob App ID
+                  before publishing to the Play Store.
+            Test App ID: ca-app-pub-3940256099942544~3347511913
+        -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id" />
 
         <!-- Phone UI -->
         <activity
@@ -37,6 +58,14 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PrivacyPolicyActivity"
+            android:exported="false" />
+
         <!-- Background timer service -->
         <service
             android:name=".TimerService"
@@ -45,12 +74,12 @@
 
         <!-- Android Auto / Car App Service -->
         <service
-            android:name=".automotive.ParkTimerCarAppService"
+            android:name=".automotive.ParkAlertCarAppService"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="androidx.car.app.CarAppService" />
-                <category android:name="androidx.car.app.category.PARKING" />
+                <category android:name="androidx.car.app.category.POI" />
             </intent-filter>
             <meta-data
                 android:name="androidx.car.app.minCarApiLevel"

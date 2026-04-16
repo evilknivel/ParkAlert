@@ -1,0 +1,46 @@
+🅿 ParkAlert – Nie wieder Knöllchen auf dem Supermarkt-Parkplatz!
+
+Kennst du das? Du gehst kurz einkaufen bei Lidl, Aldi, Rewe, Edeka oder Kaufland – und wenn du zurückkommst, klebt ein Strafzettel unter dem Scheibenwischer. ParkAlert erinnert dich rechtzeitig, bevor die Parkzeit abläuft.
+
+──────────────────────────────
+WIE ES FUNKTIONIERT
+──────────────────────────────
+1. App öffnen
+2. Parkdauer auswählen: 15, 30, 60, 90 oder 120 Minuten
+3. Einkaufen gehen – ParkAlert läuft im Hintergrund
+4. Bei 10 Minuten Restzeit: Warnung!
+5. Bei 0 Minuten: Alarm + Vibration
+
+──────────────────────────────
+FUNKTIONEN
+──────────────────────────────
+✅ 5 Schnellwahl-Buttons: 15 / 30 / 60 / 90 / 120 Minuten
+✅ Großer Countdown-Bildschirm – gut lesbar auch in der Sonne
+✅ Farbwechsel: Grün → Gelb (10 Min) → Rot (abgelaufen)
+✅ Läuft weiter bei gesperrtem Bildschirm (Foreground Service)
+✅ Alarm-Benachrichtigung + Vibration bei Ablauf
+✅ Überfällig-Anzeige: zeigt wie lange die Zeit schon abgelaufen ist
+✅ Android Auto-Unterstützung
+✅ Kostenlos – werbefinanziert mit DSGVO-konformer Einwilligung
+✅ Kein Account, keine Registrierung, keine Cloud
+
+──────────────────────────────
+PERFEKT FÜR
+──────────────────────────────
+• Supermarkt-Parkplätze: Lidl, Aldi, Rewe, Edeka, Kaufland, Netto, Penny
+• Parkzonen mit Parkscheibe / Parkuhr
+• Kurzzeit-Parkplätze in der Innenstadt
+• Überall wo eine maximale Parkdauer gilt
+• Einkaufszentren und Retail-Parks
+
+──────────────────────────────
+DATENSCHUTZ
+──────────────────────────────
+Die App zeigt Werbung über Google AdMob. Beim ersten Start wirst du nach deiner Einwilligung gefragt (DSGVO / IAB TCF 2.2). Du kannst jederzeit Nein sagen – die App funktioniert auch ohne Einwilligung vollständig. Deine Einwilligung kann jederzeit in den Einstellungen geändert werden.
+
+Keine Standortdaten, keine Nutzungsverfolgung durch den App-Entwickler.
+
+──────────────────────────────
+KEYWORDS
+──────────────────────────────
+Parkzeit, Parkuhr, Parkwächter, Parkdepot, Knöllchen, Strafzettel, Parkplatz, Supermarkt, Einkaufen, 90 Minuten, Lidl, Aldi, Rewe, Edeka, Kaufland, Netto, Penny, Parkzeit-Timer, Parkzeit-Alarm, kostenlos, Android Auto

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Banner ad added at the bottom. btnReset is now constrained to the top of the
+    AdView rather than the bottom of the parent so it sits just above the ad.
+    TODO: Replace test ad unit ID in strings.xml before publishing.
+-->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -25,6 +30,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="56dp" />
 
+    <!-- Start timestamp, shown once the timer is running -->
+    <TextView
+        android:id="@+id/tvStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/green_medium"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Gestartet: 14:30 Uhr"
+        tools:visibility="visible" />
+
     <!-- Big countdown display -->
     <TextView
         android:id="@+id/tvTimer"
@@ -36,7 +57,7 @@
         android:fontFamily="monospace"
         android:textColor="@color/green_dark"
         android:letterSpacing="0.05"
-        app:layout_constraintTop_toBottomOf="@id/tvStatus"
+        app:layout_constraintTop_toBottomOf="@id/tvStartTime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/tvLabel"
@@ -55,16 +76,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnReset" />
 
-    <!-- Reset / stop button -->
+    <!-- Reset / stop button – sits above the banner ad -->
     <Button
         android:id="@+id/btnReset"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="220dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/btn_reset"
         android:textSize="18sp"
         android:backgroundTint="@color/red_alert"
+        app:layout_constraintBottom_toTopOf="@id/adBannerTimer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--
+        Banner ad – pinned to screen bottom.
+        Test banner ID: ca-app-pub-3940256099942544/6300978111
+        TODO: Replace with real AdMob banner ID in strings.xml before publishing.
+    -->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adBannerTimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:adSize="BANNER"
+        app:adUnitId="@string/admob_banner_timer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

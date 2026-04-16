@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    German (de) string overrides.
+    Only strings that differ from the English default are listed here.
+    Strings not listed fall back to res/values/strings.xml automatically.
+-->
+<resources>
+    <string name="app_name">ParkAlert</string>
+    <string name="app_header">🅿 ParkAlert</string>
+
+    <!-- Main screen -->
+    <string name="select_duration">Parkzeit auswählen</string>
+
+    <!-- Button labels are the same in both languages (15 Min, 30 Min …) -->
+
+    <!-- Timer screen status / labels -->
+    <string name="timer_running">⏱ Parkzeit läuft…</string>
+    <string name="timer_warning">⚠️ Achtung: Noch 10 Minuten!</string>
+    <string name="timer_alert">🚨 Zeit abgelaufen!</string>
+    <string name="remaining">Verbleibende Zeit</string>
+    <string name="btn_reset">Zurück</string>
+    <string name="btn_stop">Stopp</string>
+
+    <!-- Timer timestamps -->
+    <string name="timer_started_at">Gestartet: %1$s Uhr</string>
+    <string name="timer_ended_at">Abgelaufen: %1$s Uhr</string>
+    <string name="overtime_label">Überfällig</string>
+
+    <!-- Notifications -->
+    <string name="notification_timer_title">ParkAlert läuft – %1$s verbleibend</string>
+    <string name="notification_warning_title">⚠️ Nur noch 10 Minuten Parkzeit!</string>
+    <string name="notification_alert_title">🚨 Parkzeit abgelaufen!</string>
+    <string name="notification_alert_text">Bitte Fahrzeug bewegen.</string>
+    <string name="notification_overtime_title">🚨 +%1$s überfällig!</string>
+    <string name="notification_tap_to_open">Tippen zum Öffnen</string>
+
+    <!-- Notification channel names (shown in system settings) -->
+    <string name="notification_channel_timer_name">ParkAlert – Laufzeit</string>
+    <string name="notification_channel_timer_desc">Zeigt die verbleibende Parkzeit an</string>
+    <string name="notification_channel_alert_name">ParkAlert – Alarm</string>
+    <string name="notification_channel_alert_desc">Alarm wenn die Parkzeit abgelaufen ist</string>
+
+    <!-- Android Auto strings -->
+    <string name="car_timer_running">Verbleibende Parkzeit:\n%1$s</string>
+    <string name="car_timer_warning">⚠️ Nur noch %1$s!\n\nBitte jetzt zum Fahrzeug zurückkehren.</string>
+    <string name="car_timer_alert">🚨 Parkzeit abgelaufen!\n\nBitte sofort zum Fahrzeug zurückkehren!</string>
+    <string name="car_timer_alert_expired">🚨 Parkzeit abgelaufen!</string>
+    <string name="car_timer_overtime">🚨 +%1$s überfällig!</string>
+    <string name="car_started_at">Gestartet: %1$s Uhr</string>
+    <string name="car_ended_at">Abgelaufen: %1$s Uhr</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_button_desc">Einstellungen öffnen</string>
+    <string name="settings_section_privacy">DATENSCHUTZ</string>
+    <string name="settings_consent">Datenschutz &amp; Einwilligung</string>
+    <string name="settings_privacy_policy">Datenschutzerklärung</string>
+    <string name="settings_section_app">APP-INFO</string>
+    <string name="settings_app_version">App-Version: %1$s</string>
+    <string name="settings_licenses">Lizenzen</string>
+
+    <!-- Consent not required (outside EEA) -->
+    <string name="consent_not_required_title">Einwilligung</string>
+    <string name="consent_not_required_message">Für Ihren Standort ist keine Einwilligung zur Datenverarbeitung erforderlich. Die App verwendet Google AdMob zur Anzeige von Werbung.</string>
+
+    <!-- Privacy policy screen -->
+    <string name="privacy_policy_title">Datenschutzerklärung</string>
+    <!-- Points to the German HTML asset in the assets/ folder -->
+    <string name="privacy_policy_asset">privacy_policy_de.html</string>
+
+    <!-- Open source licenses -->
+    <string name="licenses_text">Diese App verwendet folgende Open-Source-Bibliotheken:\n\n\u2022 AndroidX AppCompat \u2013 Apache License 2.0\n\u2022 AndroidX ConstraintLayout \u2013 Apache License 2.0\n\u2022 Material Components for Android \u2013 Apache License 2.0\n\u2022 Android Car App Library \u2013 Apache License 2.0\n\u2022 Kotlin Standard Library \u2013 Apache License 2.0\n\u2022 kotlinx.coroutines \u2013 Apache License 2.0\n\u2022 Google Mobile Ads SDK \u2013 Google APIs Terms of Service\n\u2022 Google User Messaging Platform \u2013 Google APIs Terms of Service\n\nVollständige Lizenztexte: https://opensource.org/licenses/Apache-2.0</string>
+
+</resources>

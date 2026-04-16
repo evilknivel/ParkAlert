@@ -2,7 +2,20 @@
   "permissions": {
     "allow": [
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git config *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(./gradlew assembleDebug --no-daemon)",
+      "Bash(where java *)",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Program Files/Android/Android Studio/jbr/bin/**)",
+      "Bash(JAVA_HOME=\"C:/Program Files/Android/Android Studio/jbr\" ./gradlew assembleDebug --no-daemon)",
+      "Bash(JAVA_HOME=\"C:/Program Files/Android/Android Studio/jbr\" JAVA_TOOL_OPTIONS=\"\" ./gradlew.bat assembleDebug --no-daemon)",
+      "Bash(curl -L -o \"C:/Projects/ParkTimer/gradle/wrapper/gradle-wrapper.jar\" \"https://raw.githubusercontent.com/gradle/gradle/v8.4.0/gradle/wrapper/gradle-wrapper.jar\")",
+      "Bash(gh api *)",
+      "Bash(git remote *)",
+      "Bash(git rm *)"
     ]
   }
 }

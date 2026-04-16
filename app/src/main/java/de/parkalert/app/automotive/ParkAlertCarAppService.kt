@@ -1,4 +1,4 @@
-package de.parktimer.app.automotive
+package de.parkalert.app.automotive
 
 import androidx.car.app.CarAppService
 import androidx.car.app.Session
@@ -11,7 +11,7 @@ import androidx.car.app.validation.HostValidator
  * `androidx.car.app.CarAppService` and the category
  * `androidx.car.app.category.PARKING`.
  */
-class ParkTimerCarAppService : CarAppService() {
+class ParkAlertCarAppService : CarAppService() {
 
     /**
      * Allow all hosts during development.
@@ -20,5 +20,5 @@ class ParkTimerCarAppService : CarAppService() {
     override fun createHostValidator(): HostValidator =
         HostValidator.ALLOW_ALL_HOSTS_VALIDATOR
 
-    override fun onCreateSession(): Session = ParkTimerSession()
+    override fun onCreateSession(): Session = ParkAlertSession()
 }

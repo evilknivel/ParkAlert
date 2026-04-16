@@ -1,94 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<!--
+    Root changed from ScrollView → ConstraintLayout so we can pin:
+      • Settings gear button  → top-right corner
+      • Banner ad             → bottom edge (outside the scroll)
+      • ScrollView (content)  → fills space between top and ad
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green_light"
-    android:fillViewport="true"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <!-- Scrollable content (header + duration buttons) -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/adBannerMain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
+
+            <!-- App header -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/app_header"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:textColor="@color/green_dark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="40dp"
+                android:text="@string/select_duration"
+                android:textSize="18sp"
+                android:textColor="@color/green_medium" />
+
+            <!-- Duration buttons -->
+            <Button
+                android:id="@+id/btn15min"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/minutes_15"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/green_primary" />
+
+            <Button
+                android:id="@+id/btn30min"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/minutes_30"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/green_primary" />
+
+            <Button
+                android:id="@+id/btn60min"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/minutes_60"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/green_primary" />
+
+            <Button
+                android:id="@+id/btn90min"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/minutes_90"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/green_primary" />
+
+            <Button
+                android:id="@+id/btn120min"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/minutes_120"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/green_primary" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--
+        Banner ad – pinned to screen bottom.
+        TODO: Replace test ad unit ID in strings.xml with your real AdMob banner ID
+              before publishing to the Play Store.
+        Test banner ID: ca-app-pub-3940256099942544/6300978111
+    -->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adBannerMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="24dp">
+        app:adSize="BANNER"
+        app:adUnitId="@string/admob_banner_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- App header -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/app_header"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            android:textColor="@color/green_dark" />
+    <!--
+        Settings (gear) button – declared LAST so it is drawn on top of the
+        ScrollView and receives touch events before it. Declaring it first
+        caused the ScrollView (drawn later, higher z-order) to swallow taps
+        in the top-right corner and make this button unresponsive.
+    -->
+    <ImageButton
+        android:id="@+id/btnSettings"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/settings_button_desc"
+        android:src="@drawable/ic_settings"
+        android:tint="@color/green_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="40dp"
-            android:text="@string/select_duration"
-            android:textSize="18sp"
-            android:textColor="@color/green_medium" />
-
-        <!-- Duration buttons -->
-        <Button
-            android:id="@+id/btn15min"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/minutes_15"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:backgroundTint="@color/green_primary" />
-
-        <Button
-            android:id="@+id/btn30min"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/minutes_30"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:backgroundTint="@color/green_primary" />
-
-        <Button
-            android:id="@+id/btn60min"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/minutes_60"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:backgroundTint="@color/green_primary" />
-
-        <Button
-            android:id="@+id/btn90min"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/minutes_90"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:backgroundTint="@color/green_primary" />
-
-        <Button
-            android:id="@+id/btn120min"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_marginBottom="24dp"
-            android:text="@string/minutes_120"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:backgroundTint="@color/green_primary" />
-
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

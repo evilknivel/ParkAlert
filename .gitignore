@@ -34,3 +34,11 @@ lint/tmp/
 
 # node_modules (if any JS tooling is added later)
 node_modules/
+
+# Local build output
+app/build/
+
+# Design/icon source assets (not part of the app source)
+ParkAlert_Final_Icons/
+ParkAlert_Icons*/
+splashscreen/

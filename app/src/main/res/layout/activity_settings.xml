@@ -55,6 +55,26 @@
                 android:textSize="15sp"
                 android:textColor="@color/primary_dark" />
 
+            <!-- ── Language section ── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_language"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnLanguage"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="32dp"
+                android:textSize="15sp"
+                android:textColor="@color/primary_dark" />
+
             <!-- ── App info section ── -->
             <TextView
                 android:layout_width="wrap_content"

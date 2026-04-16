@@ -1,10 +1,14 @@
 package de.parkalert.app
 
 import android.app.Application
+import android.content.Context
+import java.util.Locale
 
 class ParkAlertApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        applyStoredLanguage()
 
         if (BuildConfig.DEBUG) {
             Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
@@ -14,6 +18,21 @@ class ParkAlertApplication : Application() {
                     throwable
                 )
             }
+        }
+    }
+
+    private fun applyStoredLanguage() {
+        val prefs = getSharedPreferences("parkalert_prefs", Context.MODE_PRIVATE)
+        val lang = prefs.getString("selected_language", "auto") ?: "auto"
+
+        if (lang != "auto") {
+            val locale = Locale(lang)
+            Locale.setDefault(locale)
+            val config = resources.configuration
+            config.setLocale(locale)
+            createConfigurationContext(config)
+            @Suppress("DEPRECATION")
+            resources.updateConfiguration(config, resources.displayMetrics)
         }
     }
 }

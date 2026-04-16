@@ -50,6 +50,10 @@
     <string name="car_ended_at">Abgelaufen: %1$s Uhr</string>
 
     <!-- Settings screen -->
+    <string name="settings_language">Sprache</string>
+    <string name="language_auto">Automatisch (System)</string>
+    <string name="language_de">Deutsch</string>
+    <string name="language_en">English</string>
     <string name="settings_title">Einstellungen</string>
     <string name="settings_button_desc">Einstellungen öffnen</string>
     <string name="settings_section_privacy">DATENSCHUTZ</string>

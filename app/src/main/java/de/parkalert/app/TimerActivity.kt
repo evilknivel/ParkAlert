@@ -51,12 +51,19 @@ class TimerActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        binding.adBannerTimer.resume()
         registerTimerReceiver()
     }
 
     override fun onPause() {
+        binding.adBannerTimer.pause()
         super.onPause()
         unregisterTimerReceiver()
+    }
+
+    override fun onDestroy() {
+        binding.adBannerTimer.destroy()
+        super.onDestroy()
     }
 
     private fun registerTimerReceiver() {
@@ -124,22 +131,21 @@ class TimerActivity : AppCompatActivity() {
                 finish()
             }
             else -> {
-                binding.root.setBackgroundColor(Color.parseColor("#E8F5E9"))
+                binding.root.setBackgroundColor(Color.parseColor("#E3F2FD"))
                 binding.tvStatus.text = getString(R.string.timer_running)
-                binding.tvStatus.setTextColor(Color.parseColor("#2E7D32"))
+                binding.tvStatus.setTextColor(Color.parseColor("#1565C0"))
                 binding.tvTimer.text = formatTime(millis)
-                binding.tvTimer.setTextColor(Color.parseColor("#1B5E20"))
+                binding.tvTimer.setTextColor(Color.parseColor("#0D47A1"))
                 binding.tvLabel.text = getString(R.string.remaining)
             }
         }
     }
 
     private fun loadBannerAdIfReady() {
-        if (!ConsentManager.getInstance(this).canRequestAds) return
+        // DEBUG: skip consent check entirely, load ads directly
+        // RELEASE: check consent before loading
+        if (!BuildConfig.DEBUG && !ConsentManager.getInstance(this).canRequestAds) return
 
-        // DEBUG only: register test device. Idempotent if MainActivity already called
-        // it, but required here when this Activity is launched directly from a
-        // notification without MainActivity in the back stack. Remove before publishing.
         if (BuildConfig.DEBUG) {
             val testDeviceIds = listOf("7B05469EEF60FD8AB5044BCA30D236D7")
             val configuration = RequestConfiguration.Builder()
@@ -148,10 +154,13 @@ class TimerActivity : AppCompatActivity() {
             MobileAds.setRequestConfiguration(configuration)
         }
 
-        // MobileAds.initialize() is idempotent; safe to call even if already done in MainActivity.
         MobileAds.initialize(this) {
             runOnUiThread {
-                binding.adBannerTimer.loadAd(AdRequest.Builder().build())
+                try {
+                    binding.adBannerTimer.loadAd(AdRequest.Builder().build())
+                } catch (e: Exception) {
+                    android.util.Log.e("ParkAlert_ADS", "Failed to load banner ad", e)
+                }
             }
         }
     }

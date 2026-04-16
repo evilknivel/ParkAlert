@@ -77,8 +77,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.adBannerMain.resume()
+    }
+
+    override fun onPause() {
+        binding.adBannerMain.pause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        binding.adBannerMain.destroy()
+        super.onDestroy()
+    }
+
     private fun loadBannerAd() {
-        binding.adBannerMain.loadAd(AdRequest.Builder().build())
+        try {
+            binding.adBannerMain.loadAd(AdRequest.Builder().build())
+        } catch (e: Exception) {
+            android.util.Log.e("ParkAlert_ADS", "Failed to load banner ad", e)
+        }
     }
 
     private fun requestNotificationPermission() {
@@ -110,15 +129,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startParkTimer(minutes: Int) {
-        val serviceIntent = Intent(this, TimerService::class.java).apply {
-            putExtra(Constants.EXTRA_DURATION_MINUTES, minutes)
-        }
-        ContextCompat.startForegroundService(this, serviceIntent)
+        try {
+            val serviceIntent = Intent(this, TimerService::class.java).apply {
+                putExtra(Constants.EXTRA_DURATION_MINUTES, minutes)
+            }
+            ContextCompat.startForegroundService(this, serviceIntent)
 
-        val activityIntent = Intent(this, TimerActivity::class.java).apply {
-            putExtra(Constants.EXTRA_DURATION_MINUTES, minutes)
+            val activityIntent = Intent(this, TimerActivity::class.java).apply {
+                putExtra(Constants.EXTRA_DURATION_MINUTES, minutes)
+            }
+            startActivity(activityIntent)
+        } catch (e: Exception) {
+            android.util.Log.e("ParkAlert_CRASH", "Failed to start timer", e)
         }
-        startActivity(activityIntent)
     }
 
     companion object {

@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/green_light">
+    android:background="@color/background">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/green_primary"
+        android:background="@color/primary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:elevation="4dp" />
 
@@ -31,7 +31,7 @@
                 android:text="@string/settings_section_privacy"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:textColor="@color/green_dark"
+                android:textColor="@color/primary_dark"
                 android:letterSpacing="0.1"
                 android:layout_marginBottom="8dp" />
 
@@ -43,7 +43,7 @@
                 android:layout_marginBottom="12dp"
                 android:text="@string/settings_consent"
                 android:textSize="15sp"
-                android:textColor="@color/green_dark" />
+                android:textColor="@color/primary_dark" />
 
             <Button
                 android:id="@+id/btnPrivacyPolicy"
@@ -53,7 +53,7 @@
                 android:layout_marginBottom="32dp"
                 android:text="@string/settings_privacy_policy"
                 android:textSize="15sp"
-                android:textColor="@color/green_dark" />
+                android:textColor="@color/primary_dark" />
 
             <!-- ── App info section ── -->
             <TextView
@@ -62,7 +62,7 @@
                 android:text="@string/settings_section_app"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:textColor="@color/green_dark"
+                android:textColor="@color/primary_dark"
                 android:letterSpacing="0.1"
                 android:layout_marginBottom="8dp" />
 
@@ -81,7 +81,7 @@
                 android:layout_height="56dp"
                 android:text="@string/settings_licenses"
                 android:textSize="15sp"
-                android:textColor="@color/green_dark" />
+                android:textColor="@color/primary_dark" />
 
         </LinearLayout>
     </ScrollView>

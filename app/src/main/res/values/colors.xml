@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Green palette (normal timer state) -->
-    <color name="green_primary">#43A047</color>
-    <color name="green_dark">#1B5E20</color>
-    <color name="green_medium">#388E3C</color>
-    <color name="green_light">#E8F5E9</color>
+    <!-- Primary blue from logo -->
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1565C0</color>
+    <color name="primary_light">#BBDEFB</color>
+
+    <!-- Orange accent from logo -->
+    <color name="accent">#FF9800</color>
+    <color name="accent_dark">#E65100</color>
+
+    <!-- Backgrounds -->
+    <color name="background">#F0F7FF</color>
+    <color name="surface">#FFFFFF</color>
+
+    <!-- Text -->
+    <color name="text_primary">#1565C0</color>
+    <color name="text_secondary">#42A5F5</color>
+
+    <!-- Legacy aliases – same values as above, keeps any unreachable refs working -->
+    <color name="green_primary">#2196F3</color>
+    <color name="green_dark">#1565C0</color>
+    <color name="green_medium">#42A5F5</color>
+    <color name="green_light">#F0F7FF</color>
 
     <!-- Warning state (10 minutes remaining) -->
     <color name="yellow_warning">#FFF9C4</color>

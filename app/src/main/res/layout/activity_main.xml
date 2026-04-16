@@ -11,7 +11,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_light"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <!-- Scrollable content (header + duration buttons) -->
@@ -32,15 +32,24 @@
             android:gravity="center_horizontal"
             android:padding="24dp">
 
+            <!-- App logo -->
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_app_logo" />
+
             <!-- App header -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:text="@string/app_header"
                 android:textSize="36sp"
                 android:textStyle="bold"
-                android:textColor="@color/green_dark" />
+                android:textColor="@color/primary_dark" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -49,7 +58,7 @@
                 android:layout_marginBottom="40dp"
                 android:text="@string/select_duration"
                 android:textSize="18sp"
-                android:textColor="@color/green_medium" />
+                android:textColor="@color/text_secondary" />
 
             <!-- Duration buttons -->
             <Button
@@ -58,10 +67,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/primary"
                 android:text="@string/minutes_15"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/green_primary" />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn30min"
@@ -72,7 +81,7 @@
                 android:text="@string/minutes_30"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:backgroundTint="@color/green_primary" />
+                android:backgroundTint="@color/primary" />
 
             <Button
                 android:id="@+id/btn60min"
@@ -83,7 +92,7 @@
                 android:text="@string/minutes_60"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:backgroundTint="@color/green_primary" />
+                android:backgroundTint="@color/primary" />
 
             <Button
                 android:id="@+id/btn90min"
@@ -94,7 +103,7 @@
                 android:text="@string/minutes_90"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:backgroundTint="@color/green_primary" />
+                android:backgroundTint="@color/primary" />
 
             <Button
                 android:id="@+id/btn120min"
@@ -105,7 +114,7 @@
                 android:text="@string/minutes_120"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:backgroundTint="@color/green_primary" />
+                android:backgroundTint="@color/primary" />
 
         </LinearLayout>
     </ScrollView>
@@ -117,11 +126,12 @@
         Test banner ID: ca-app-pub-3940256099942544/6300978111
     -->
     <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adBannerMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:adSize="BANNER"
-        app:adUnitId="@string/admob_banner_main"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/admob_banner_main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -140,7 +150,7 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/settings_button_desc"
         android:src="@drawable/ic_settings"
-        android:tint="@color/green_dark"
+        android:tint="@color/primary_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

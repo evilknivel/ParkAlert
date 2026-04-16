@@ -9,7 +9,7 @@ import androidx.car.app.validation.HostValidator
  *
  * The service is declared in the manifest with the intent-filter
  * `androidx.car.app.CarAppService` and the category
- * `androidx.car.app.category.PARKING`.
+ * `androidx.car.app.category.IOT`.
  */
 class ParkAlertCarAppService : CarAppService() {
 
@@ -20,5 +20,13 @@ class ParkAlertCarAppService : CarAppService() {
     override fun createHostValidator(): HostValidator =
         HostValidator.ALLOW_ALL_HOSTS_VALIDATOR
 
-    override fun onCreateSession(): Session = ParkAlertSession()
+    override fun onCreate() {
+        super.onCreate()
+        android.util.Log.d("ParkAlert_AUTO", "CarAppService onCreate() called")
+    }
+
+    override fun onCreateSession(): Session {
+        android.util.Log.d("ParkAlert_AUTO", "onCreateSession() called")
+        return ParkAlertSession()
+    }
 }

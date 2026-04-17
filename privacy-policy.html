@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkAlert – Datenschutzerklärung / Privacy Policy</title>
+    <style>
+        :root {
+            --blue: #2196F3;
+            --blue-dark: #1565C0;
+            --blue-light: #BBDEFB;
+            --orange: #FF9800;
+            --bg: #F0F7FF;
+            --white: #ffffff;
+            --text: #1a1a2e;
+            --text-light: #546e7a;
+            --border: #e0eaf5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+            color: white;
+            padding: 48px 24px 40px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            opacity: 0.85;
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.4);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active,
+        .lang-btn:hover {
+            background: white;
+            color: var(--blue-dark);
+            border-color: white;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(33,150,243,0.06);
+        }
+
+        .section-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--blue-dark);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--blue-light);
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--blue);
+            margin: 20px 0 8px;
+        }
+
+        p { margin-bottom: 12px; color: var(--text); }
+        p:last-child { margin-bottom: 0; }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        li { margin-bottom: 6px; }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+            border-bottom: 1px solid var(--blue-light);
+        }
+
+        a:hover { border-bottom-color: var(--blue); }
+
+        .highlight {
+            background: var(--blue-light);
+            border-left: 4px solid var(--blue);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--blue-light), #e3f2fd);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 16px;
+        }
+
+        .contact-card p { margin-bottom: 4px; }
+
+        footer {
+            text-align: center;
+            padding: 32px 24px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        [lang-content] { display: none; }
+        [lang-content].visible { display: block; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .section { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">🅿️</div>
+    <h1>ParkAlert</h1>
+    <p id="header-sub">Datenschutzerklärung &amp; Impressum</p>
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('de')">🇩🇪 Deutsch</button>
+        <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+</header>
+
+<main>
+
+    <!-- DEUTSCH -->
+    <div lang-content="de" class="visible">
+
+        <div class="section">
+            <span class="section-icon">📋</span>
+            <h2>Datenschutzerklärung</h2>
+            <p>Stand: April 2026</p>
+            <div class="highlight">
+                Diese Datenschutzerklärung gilt für die Android-App <strong>ParkAlert</strong> (Paketname: de.parkalert.app) und informiert Sie über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten gemäß DSGVO und TTDSG.
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">👤</span>
+            <h2>Verantwortlicher</h2>
+            <div class="contact-card">
+                <p><strong>Frank-Martin Holz</strong></p>
+                <p>Rehwinkel 22b</p>
+                <p>22149 Hamburg</p>
+                <p>Deutschland</p>
+                <p style="margin-top:12px;">E-Mail: <a href="mailto:fmholz@googlemail.com">fmholz@googlemail.com</a></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">📱</span>
+            <h2>Über die App</h2>
+            <p>ParkAlert ist ein kostenloser Parkzeit-Timer für Supermarkt- und Einzelhandels-Parkplätze. Die App ermöglicht das Starten eines Countdowns (15, 30, 60, 90 oder 120 Minuten) und warnt den Nutzer rechtzeitig vor Ablauf der Parkzeit.</p>
+            <p>Die App unterstützt Android Auto für die Nutzung im Fahrzeug.</p>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">🔍</span>
+            <h2>Datenerhebung und -verarbeitung</h2>
+
+            <h3>1. Werbung durch Google AdMob</h3>
+            <p>Unsere App verwendet <strong>Google AdMob</strong> zur Einblendung von Werbeanzeigen. AdMob kann dabei folgende Daten erheben:</p>
+            <ul>
+                <li>Geräte-ID / Werbe-ID (Android Advertising ID)</li>
+                <li>IP-Adresse</li>
+                <li>App-Nutzungsverhalten</li>
+                <li>Geräteinformationen (Modell, Betriebssystem)</li>
+                <li>Standortdaten (grob, falls berechtigt)</li>
+            </ul>
+            <p><strong>Zweck:</strong> Personalisierte oder nicht-personalisierte Werbeanzeigen.</p>
+            <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) sowie § 25 TTDSG.</p>
+            <p>Beim ersten App-Start werden Sie um Ihre Einwilligung gebeten. Sie können Ihre Einwilligung jederzeit in den App-Einstellungen widerrufen.</p>
+            <p>Datenschutzerklärung Google: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
+
+            <h3>2. Keine eigene Datenerhebung</h3>
+            <p>ParkAlert selbst erhebt, speichert oder überträgt <strong>keine</strong> personenbezogenen Daten. Alle Timer-Daten verbleiben ausschließlich lokal auf Ihrem Gerät.</p>
+
+            <h3>3. Benachrichtigungen</h3>
+            <p>Die App nutzt lokale Benachrichtigungen auf Ihrem Gerät, um Sie über ablaufende Parkzeiten zu informieren. Diese Daten verlassen Ihr Gerät nicht.</p>
+
+            <h3>4. Android Auto</h3>
+            <p>Bei der Nutzung von Android Auto werden keine zusätzlichen Daten durch ParkAlert erhoben. Es gelten die Datenschutzbestimmungen von Google Android Auto.</p>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">⚖️</span>
+            <h2>Ihre Rechte (DSGVO)</h2>
+            <p>Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
+            <ul>
+                <li><strong>Auskunftsrecht</strong> (Art. 15 DSGVO)</li>
+                <li><strong>Berichtigungsrecht</strong> (Art. 16 DSGVO)</li>
+                <li><strong>Recht auf Löschung</strong> (Art. 17 DSGVO)</li>
+                <li><strong>Recht auf Einschränkung</strong> (Art. 18 DSGVO)</li>
+                <li><strong>Widerspruchsrecht</strong> (Art. 21 DSGVO)</li>
+                <li><strong>Recht auf Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
+                <li><strong>Widerrufsrecht</strong> bei erteilter Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
+            </ul>
+            <p>Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:fmholz@googlemail.com">fmholz@googlemail.com</a></p>
+
+            <h3>Beschwerderecht</h3>
+            <p>Sie haben das Recht, sich bei der zuständigen Datenschutz-Aufsichtsbehörde zu beschweren. In Hamburg ist dies:</p>
+            <p><strong>Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit</strong><br>
+            Ludwig-Erhard-Str. 22, 20459 Hamburg<br>
+            <a href="https://www.datenschutz.hamburg.de" target="_blank">www.datenschutz.hamburg.de</a></p>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">🍪</span>
+            <h2>Tracking &amp; Cookies</h2>
+            <p>Die App selbst verwendet keine Cookies. Google AdMob kann jedoch Tracking-Technologien einsetzen, um personalisierte Werbung anzuzeigen. Dies geschieht nur nach Ihrer ausdrücklichen Einwilligung gemäß § 25 TTDSG.</p>
+            <p>Ihre Einwilligung können Sie jederzeit in den <strong>App-Einstellungen → Datenschutz &amp; Einwilligung</strong> ändern oder widerrufen.</p>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">🏢</span>
+            <h2>Impressum</h2>
+            <div class="contact-card">
+                <p><strong>Frank-Martin Holz</strong></p>
+                <p>Rehwinkel 22b, 22149 Hamburg</p>
+                <p>E-Mail: <a href="mailto:fmholz@googlemail.com">fmholz@googlemail.com</a></p>
+            </div>
+            <p style="margin-top:16px; font-size:0.9rem; color:var(--text-light);">Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV: Frank-Martin Holz, Anschrift wie oben.</p>
+        </div>
+
+    </div>
+
+    <!-- ENGLISH -->
+    <div lang-content="en">
+
+        <div class="section">
+            <span class="section-icon">📋</span>
+            <h2>Privacy Policy</h2>
+            <p>Last updated: April 2026</p>
+            <div class="highlight">
+                This Privacy Policy applies to the Android app <strong>ParkAlert</strong> (package name: de.parkalert.app) and explains how we handle your data in accordance with GDPR.
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">👤</span>
+            <h2>Data Controller</h2>
+            <div class="contact-card">
+                <p><strong>Frank-Martin Holz</strong></p>
+                <p>Rehwinkel 22b</p>
+                <p>22149 Hamburg</p>
+                <p>Germany</p>
+                <p style="margin-top:12px;">Email: <a href="mailto:fmholz@googlemail.com">fmholz@googlemail.com</a></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">📱</span>
+            <h2>About the App</h2>
+            <p>ParkAlert is a free parking timer app for supermarket and retail parking lots. It allows users to start a countdown (15, 30, 60, 90 or 120 minutes) and receive timely warnings before their parking time expires.</p>
+            <p>The app supports Android Auto for in-car use.</p>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">🔍</span>
+            <h2>Data Collection and Processing</h2>
+
+            <h3>1. Advertising via Google AdMob</h3>
+            <p>Our app uses <strong>Google AdMob</strong> to display advertisements. AdMob may collect the following data:</p>
+            <ul>
+                <li>Device ID / Advertising ID (Android Advertising ID)</li>
+                <li>IP address</li>
+                <li>App usage behavior</li>
+                <li>Device information (model, operating system)</li>
+                <li>Approximate location (if permitted)</li>
+            </ul>
+            <p><strong>Purpose:</strong> Personalized or non-personalized advertising.</p>
+            <p><strong>Legal basis:</strong> Art. 6(1)(a) GDPR (consent).</p>
+            <p>On first launch, you will be asked for your consent. You can withdraw your consent at any time in the app settings.</p>
+            <p>Google Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
+
+            <h3>2. No Independent Data Collection</h3>
+            <p>ParkAlert itself does <strong>not</strong> collect, store or transmit any personal data. All timer data remains exclusively on your device.</p>
+
+            <h3>3. Notifications</h3>
+            <p>The app uses local notifications on your device to alert you about expiring parking times. This data never leaves your device.</p>
+
+            <h3>4. Android Auto</h3>
+            <p>When using Android Auto, no additional data is collected by ParkAlert. Google's Android Auto privacy policy applies.</p>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">⚖️</span>
+            <h2>Your Rights (GDPR)</h2>
+            <p>You have the following rights regarding your personal data:</p>
+            <ul>
+                <li><strong>Right of access</strong> (Art. 15 GDPR)</li>
+                <li><strong>Right to rectification</strong> (Art. 16 GDPR)</li>
+                <li><strong>Right to erasure</strong> (Art. 17 GDPR)</li>
+                <li><strong>Right to restriction</strong> (Art. 18 GDPR)</li>
+                <li><strong>Right to object</strong> (Art. 21 GDPR)</li>
+                <li><strong>Right to data portability</strong> (Art. 20 GDPR)</li>
+                <li><strong>Right to withdraw consent</strong> (Art. 7(3) GDPR)</li>
+            </ul>
+            <p>To exercise your rights, please contact: <a href="mailto:fmholz@googlemail.com">fmholz@googlemail.com</a></p>
+
+            <h3>Right to Lodge a Complaint</h3>
+            <p>You have the right to lodge a complaint with the competent data protection supervisory authority. In Hamburg, Germany:</p>
+            <p><strong>Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit</strong><br>
+            Ludwig-Erhard-Str. 22, 20459 Hamburg<br>
+            <a href="https://www.datenschutz.hamburg.de" target="_blank">www.datenschutz.hamburg.de</a></p>
+        </div>
+
+        <div class="section">
+            <span class="section-icon">🍪</span>
+            <h2>Tracking &amp; Cookies</h2>
+            <p>The app itself does not use cookies. However, Google AdMob may use tracking technologies to display personalized ads. This only happens after your explicit consent.</p>
+            <p>You can change or withdraw your consent at any time in <strong>App Settings → Privacy &amp; Consent</strong>.</p>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>© 2026 Frank-Martin Holz · ParkAlert · <a href="mailto:fmholz@googlemail.com">fmholz@googlemail.com</a></p>
+    <p style="margin-top:8px;">Made with ❤️ in Hamburg</p>
+</footer>
+
+<script>
+function setLang(lang) {
+    document.querySelectorAll('[lang-content]').forEach(el => {
+        el.classList.toggle('visible', el.getAttribute('lang-content') === lang);
+    });
+    document.querySelectorAll('.lang-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', (i === 0 && lang === 'de') || (i === 1 && lang === 'en'));
+    });
+    document.getElementById('header-sub').textContent = lang === 'de' 
+        ? 'Datenschutzerklärung & Impressum' 
+        : 'Privacy Policy & Legal Notice';
+    document.documentElement.lang = lang;
+}
+</script>
+
+</body>
+</html>

@@ -75,7 +75,7 @@
             android:foregroundServiceType="specialUse">
             <property
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="Parking timer countdown running in background to alert user when parking time expires." />
+                android:value="Local parking timer countdown that alerts the user when parking time expires. No network communication performed." />
         </service>
 
         <!-- Android Auto / Car App Service -->

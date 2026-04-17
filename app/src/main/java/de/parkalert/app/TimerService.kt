@@ -43,6 +43,12 @@ class TimerService : Service() {
     override fun onDestroy() {
         cancelOvertime()
         countDownTimer?.cancel()
+        TimerState.isRunning = false
+        sendBroadcast(Intent(Constants.ACTION_TIMER_UPDATE).apply {
+            putExtra(Constants.EXTRA_TIMER_STATE, Constants.TIMER_STATE_STOPPED)
+            putExtra(Constants.EXTRA_REMAINING_MILLIS, 0L)
+            setPackage(packageName)
+        })
         super.onDestroy()
     }
 
@@ -58,6 +64,9 @@ class TimerService : Service() {
         overtimeMillis = 0L
         remainingMillis = durationMillis
         currentState = Constants.TIMER_STATE_RUNNING
+        TimerState.isRunning = true
+        TimerState.durationMinutes = (durationMillis / 60_000L).toInt()
+        TimerState.remainingMinutes = TimerState.durationMinutes
 
         val notification = buildTimerNotification(durationMillis, currentState)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
@@ -74,6 +83,7 @@ class TimerService : Service() {
 
             override fun onTick(millisUntilFinished: Long) {
                 remainingMillis = millisUntilFinished
+                TimerState.remainingMinutes = (millisUntilFinished / 60_000L).toInt()
 
                 val newState = if (millisUntilFinished <= Constants.WARNING_THRESHOLD_MILLIS) {
                     Constants.TIMER_STATE_WARNING

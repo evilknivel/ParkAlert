@@ -48,6 +48,7 @@
     <string name="car_timer_overtime">🚨 +%1$s überfällig!</string>
     <string name="car_started_at">Gestartet: %1$s Uhr</string>
     <string name="car_ended_at">Abgelaufen: %1$s Uhr</string>
+    <string name="car_timer_already_running">Timer läuft bereits – noch %1$d Min.\nAktuellen Timer stoppen?</string>
 
     <!-- Settings screen -->
     <string name="settings_language">Sprache</string>
@@ -71,6 +72,7 @@
     <string name="privacy_policy_title">Datenschutzerklärung</string>
     <!-- Points to the German HTML asset in the assets/ folder -->
     <string name="privacy_policy_asset">privacy_policy_de.html</string>
+    <string name="privacy_policy_url">https://evilknivel.github.io/parkalert/</string>
 
     <!-- Open source licenses -->
     <string name="licenses_text">Diese App verwendet folgende Open-Source-Bibliotheken:\n\n\u2022 AndroidX AppCompat \u2013 Apache License 2.0\n\u2022 AndroidX ConstraintLayout \u2013 Apache License 2.0\n\u2022 Material Components for Android \u2013 Apache License 2.0\n\u2022 Android Car App Library \u2013 Apache License 2.0\n\u2022 Kotlin Standard Library \u2013 Apache License 2.0\n\u2022 kotlinx.coroutines \u2013 Apache License 2.0\n\u2022 Google Mobile Ads SDK \u2013 Google APIs Terms of Service\n\u2022 Google User Messaging Platform \u2013 Google APIs Terms of Service\n\nVollständige Lizenztexte: https://opensource.org/licenses/Apache-2.0</string>

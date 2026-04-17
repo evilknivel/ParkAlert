@@ -8,7 +8,11 @@ class ParkAlertApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        applyStoredLanguage()
+        // Only apply language and AdMob in main process
+        // CarAppService runs in a separate process context
+        if (isMainProcess()) {
+            applyStoredLanguage()
+        }
 
         if (BuildConfig.DEBUG) {
             Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
@@ -19,6 +23,15 @@ class ParkAlertApplication : Application() {
                 )
             }
         }
+    }
+
+    private fun isMainProcess(): Boolean {
+        val pid = android.os.Process.myPid()
+        val manager = getSystemService(ACTIVITY_SERVICE)
+            as android.app.ActivityManager
+        return manager.runningAppProcesses?.any {
+            it.pid == pid && it.processName == packageName
+        } ?: true
     }
 
     private fun applyStoredLanguage() {

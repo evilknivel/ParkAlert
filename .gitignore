@@ -19,6 +19,8 @@
 *.jks
 *.keystore
 release.properties
+keystore.properties
+/app/parkalert-release.jks
 
 # Gradle cache and wrapper JAR (users download it on first build)
 gradle/wrapper/gradle-wrapper.jar

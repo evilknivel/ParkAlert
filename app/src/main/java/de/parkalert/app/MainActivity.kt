@@ -14,6 +14,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 import de.parkalert.app.databinding.ActivityMainBinding
+import de.parkalert.app.TimerState
 import java.util.Locale
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -102,6 +103,17 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         binding.adBannerMain.resume()
+
+        // If a timer was started from Android Auto, send the user straight to TimerActivity.
+        // finish() removes MainActivity from the back stack so pressing Back from
+        // TimerActivity returns to the launcher rather than looping back here.
+        if (TimerState.isRunning) {
+            startActivity(Intent(this, TimerActivity::class.java).apply {
+                putExtra(Constants.EXTRA_DURATION_MINUTES, TimerState.durationMinutes)
+            })
+            finish()
+            return
+        }
 
         // Recreate once if the user changed the language in Settings and came back.
         // The companion-object flag prevents a recreate() → onResume() → recreate() loop.

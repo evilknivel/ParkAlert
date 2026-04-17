@@ -11,8 +11,10 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.parkalert.app.Constants
+import de.parkalert.app.MainActivity
 import de.parkalert.app.R
 import de.parkalert.app.TimerService
+import de.parkalert.app.TimerState
 import java.util.Calendar
 
 /**
@@ -54,6 +56,13 @@ class TimerScreen(
                 timerState = intent.getIntExtra(Constants.EXTRA_TIMER_STATE, Constants.TIMER_STATE_RUNNING)
                 startTimeMillis = intent.getLongExtra(Constants.EXTRA_START_TIME_MILLIS, 0L)
                 endTimeMillis = intent.getLongExtra(Constants.EXTRA_END_TIME_MILLIS, 0L)
+
+                if (timerState == Constants.TIMER_STATE_STOPPED) {
+                    TimerState.isRunning = false
+                    screenManager.pop()
+                    return
+                }
+
                 invalidate()
             }
         }
@@ -105,6 +114,12 @@ class TimerScreen(
             .setOnClickListener {
                 carContext.stopService(Intent(carContext, TimerService::class.java))
                 screenManager.pop()
+                val intent = Intent(carContext, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                            Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                            Intent.FLAG_ACTIVITY_SINGLE_TOP
+                }
+                carContext.startActivity(intent)
             }
             .build()
 

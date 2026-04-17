@@ -47,6 +47,7 @@
     <string name="car_timer_overtime">🚨 +%1$s overtime!</string>
     <string name="car_started_at">Started: %1$s</string>
     <string name="car_ended_at">Expired: %1$s</string>
+    <string name="car_timer_already_running">Timer already running – %1$d min remaining.\nStop the current timer?</string>
 
     <string name="settings_language">Language</string>
     <string name="language_auto">Automatic (System)</string>

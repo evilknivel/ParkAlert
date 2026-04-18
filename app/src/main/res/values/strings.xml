@@ -52,8 +52,13 @@
     <string name="car_timer_overtime">🚨 +%1$s overtime!</string>
     <string name="car_started_at">Started: %1$s</string>
     <string name="car_ended_at">Expired: %1$s</string>
+    <string name="car_timer_already_running">Timer already running – %1$d min remaining.\nStop the current timer?</string>
 
     <!-- Settings screen -->
+    <string name="settings_language">Language</string>
+    <string name="language_auto">Automatic (System)</string>
+    <string name="language_de">Deutsch</string>
+    <string name="language_en">English</string>
     <string name="settings_title">Settings</string>
     <string name="settings_button_desc">Open settings</string>
     <string name="settings_section_privacy">PRIVACY</string>
@@ -71,6 +76,7 @@
     <string name="privacy_policy_title">Privacy Policy</string>
     <!-- Asset filename – overridden per locale in values-de/ etc. -->
     <string name="privacy_policy_asset">privacy_policy_en.html</string>
+    <string name="privacy_policy_url">https://evilknivel.github.io/parkalert/</string>
 
     <!-- Open source licenses -->
     <string name="licenses_text">This app uses the following open source libraries:\n\n\u2022 AndroidX AppCompat \u2013 Apache License 2.0\n\u2022 AndroidX ConstraintLayout \u2013 Apache License 2.0\n\u2022 Material Components for Android \u2013 Apache License 2.0\n\u2022 Android Car App Library \u2013 Apache License 2.0\n\u2022 Kotlin Standard Library \u2013 Apache License 2.0\n\u2022 kotlinx.coroutines \u2013 Apache License 2.0\n\u2022 Google Mobile Ads SDK \u2013 Google APIs Terms of Service\n\u2022 Google User Messaging Platform \u2013 Google APIs Terms of Service\n\nFull license texts: https://opensource.org/licenses/Apache-2.0</string>

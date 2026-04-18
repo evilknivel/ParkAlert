@@ -1,6 +1,7 @@
 package de.parkalert.app
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -8,10 +9,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 import de.parkalert.app.databinding.ActivityMainBinding
+import de.parkalert.app.TimerState
+import java.util.Locale
 import java.util.concurrent.atomic.AtomicBoolean
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +26,23 @@ class MainActivity : AppCompatActivity() {
     // the parallel canRequestAds() check already triggered init.
     private val isMobileAdsInitialized = AtomicBoolean(false)
 
+    override fun attachBaseContext(newBase: Context) {
+        val prefs = newBase.getSharedPreferences("parkalert_prefs", Context.MODE_PRIVATE)
+        val lang = prefs.getString("selected_language", "auto") ?: "auto"
+        if (lang == "auto") {
+            super.attachBaseContext(newBase)
+            return
+        }
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = newBase.resources.configuration
+        config.setLocale(locale)
+        val context = newBase.createConfigurationContext(config)
+        super.attachBaseContext(context)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -65,7 +85,10 @@ class MainActivity : AppCompatActivity() {
         // DEBUG only: register test device so Google serves "Test Ad" banners.
         // Must be called BEFORE MobileAds.initialize(). Remove before publishing.
         if (BuildConfig.DEBUG) {
-            val testDeviceIds = listOf("7B05469EEF60FD8AB5044BCA30D236D7")
+            val testDeviceIds = listOf(
+                "7B05469EEF60FD8AB5044BCA30D236D7", // POCO X6 Pro
+                "9BF79F51187F166C3B5B5F8A88F35B13"  // Samsung Galaxy S20 FE
+            )
             val configuration = RequestConfiguration.Builder()
                 .setTestDeviceIds(testDeviceIds)
                 .build()
@@ -80,6 +103,28 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         binding.adBannerMain.resume()
+
+        // If a timer was started from Android Auto, send the user straight to TimerActivity.
+        // finish() removes MainActivity from the back stack so pressing Back from
+        // TimerActivity returns to the launcher rather than looping back here.
+        if (TimerState.isRunning) {
+            startActivity(Intent(this, TimerActivity::class.java).apply {
+                putExtra(Constants.EXTRA_DURATION_MINUTES, TimerState.durationMinutes)
+            })
+            finish()
+            return
+        }
+
+        // Recreate once if the user changed the language in Settings and came back.
+        // The companion-object flag prevents a recreate() → onResume() → recreate() loop.
+        val prefs = getSharedPreferences("parkalert_prefs", Context.MODE_PRIVATE)
+        val lang = prefs.getString("selected_language", "auto") ?: "auto"
+        if (lang != "auto" && lang != lastAppliedLanguage) {
+            lastAppliedLanguage = lang
+            recreate()
+        } else {
+            lastAppliedLanguage = lang
+        }
     }
 
     override fun onPause() {
@@ -146,5 +191,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val REQUEST_NOTIFICATION_PERMISSION = 1001
+        private var lastAppliedLanguage: String = "auto"
     }
 }

@@ -19,6 +19,8 @@
 *.jks
 *.keystore
 release.properties
+keystore.properties
+/app/parkalert-release.jks
 
 # Gradle cache and wrapper JAR (users download it on first build)
 gradle/wrapper/gradle-wrapper.jar
@@ -34,3 +36,11 @@ lint/tmp/
 
 # node_modules (if any JS tooling is added later)
 node_modules/
+
+# Local build output
+app/build/
+
+# Design/icon source assets (not part of the app source)
+ParkAlert_Final_Icons/
+ParkAlert_Icons*/
+splashscreen/

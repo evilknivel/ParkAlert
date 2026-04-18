@@ -1,5 +1,11 @@
 package de.parkalert.app
 
+object TimerState {
+    @Volatile var isRunning: Boolean = false
+    @Volatile var remainingMinutes: Int = 0
+    @Volatile var durationMinutes: Int = 0
+}
+
 object Constants {
     // Broadcast actions (not exported, app-internal only)
     const val ACTION_TIMER_UPDATE = "de.parkalert.app.TIMER_UPDATE"

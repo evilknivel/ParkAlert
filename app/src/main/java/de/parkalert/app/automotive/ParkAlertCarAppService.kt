@@ -27,6 +27,14 @@ class ParkAlertCarAppService : CarAppService() {
 
     override fun onCreateSession(): Session {
         android.util.Log.d("ParkAlert_AUTO", "onCreateSession() called")
-        return ParkAlertSession()
+        return try {
+            android.util.Log.d("ParkAlert_AUTO", "Creating ParkAlertSession...")
+            val session = ParkAlertSession()
+            android.util.Log.d("ParkAlert_AUTO", "ParkAlertSession created OK")
+            session
+        } catch (e: Exception) {
+            android.util.Log.e("ParkAlert_AUTO", "CRASH in onCreateSession: ${e.javaClass.simpleName}: ${e.message}", e)
+            throw e
+        }
     }
 }

@@ -35,9 +35,7 @@
 
         <!--
             AdMob Application ID.
-            TODO: Replace the test App ID below with your real AdMob App ID
-                  before publishing to the Play Store.
-            Test App ID: ca-app-pub-3940256099942544~3347511913
+            Production App ID (see res/values/strings.xml).
         -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

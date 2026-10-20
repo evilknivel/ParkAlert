@@ -35,7 +35,7 @@
 | Foreground service + notifications | Complete |
 | Overtime tracking | Complete |
 | GDPR / UMP consent (IAB TCF 2.2) | Complete |
-| AdMob banner ads | Complete — **test IDs**, replace before publishing |
+| AdMob banner ads | Complete — production IDs; AdMob app review pending until store listing is linked |
 | Play Store release | Uploaded to Play Console for testing — not yet public |
 | Screenshots | Pending |
 
@@ -145,25 +145,21 @@ The app uses Android's standard i18n system. By default the UI follows the devic
 
 ## AdMob Setup
 
-### Current state (test IDs — development only)
+Production AdMob IDs are set in `app/src/main/res/values/strings.xml`:
 
-| String resource | Value |
+| String resource | Used for |
 |---|---|
-| `admob_app_id` | `ca-app-pub-3940256099942544~3347511913` |
-| `admob_banner_main` | `ca-app-pub-3940256099942544/6300978111` |
-| `admob_banner_timer` | `ca-app-pub-3940256099942544/6300978111` |
+| `admob_app_id` | AdMob app (manifest `APPLICATION_ID`) |
+| `admob_banner_main` | Banner on the duration-selection screen |
+| `admob_banner_timer` | Banner on the countdown screen |
 
-### Switching to real IDs before publishing
+Debug builds still get **test ads**: the test devices are registered via `RequestConfiguration` in `MainActivity` / `TimerActivity` (`BuildConfig.DEBUG` only). Never tap real ads on your own device in a release build.
 
-1. Create an [AdMob account](https://admob.google.com) and register the app with package `de.parkalert.app`.
-2. Create two **Banner** ad units (main screen and timer screen).
-3. In `app/src/main/res/values/strings.xml`, replace:
+After the app is live in the Play Store:
+1. Link the AdMob app to the store listing (AdMob → App settings) so AdMob can review it.
+2. Make sure the GDPR message is published (AdMob → Privacy & messaging → GDPR); without it UMP shows no consent form and no ads load in the EEA.
 
-```xml
-<string name="admob_app_id" translatable="false">ca-app-pub-YOUR_APP_ID</string>
-<string name="admob_banner_main" translatable="false">ca-app-pub-YOUR_BANNER_ID_MAIN</string>
-<string name="admob_banner_timer" translatable="false">ca-app-pub-YOUR_BANNER_ID_TIMER</string>
-```
+Google's test IDs for development: app `ca-app-pub-3940256099942544~3347511913`, banner `ca-app-pub-3940256099942544/6300978111`.
 
 ---
 
@@ -193,7 +189,8 @@ See [`TESTING.md`](TESTING.md) for the full GDPR compliance checklist.
 
 ## Play Store Publishing Checklist
 
-- [ ] Replace test AdMob IDs in `res/values/strings.xml`
+- [x] Replace test AdMob IDs in `res/values/strings.xml`
+- [ ] Link AdMob app to the Play Store listing after approval
 - [ ] Configure GDPR message in AdMob Console (Privacy & messaging → GDPR)
 - [ ] Add privacy policy URL in Play Console (App content → Privacy policy)
 - [ ] Complete Play Console **Data safety** form (AdMob: device ID, usage data, approx. location)

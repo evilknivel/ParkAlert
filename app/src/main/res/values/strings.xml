@@ -85,15 +85,13 @@
 
     <!--
         AdMob IDs (non-translatable – only declared here, not in locale folders).
-        TODO: Replace BOTH values below with your real AdMob IDs before publishing.
-        Steps:
-          1. Create an AdMob account at https://admob.google.com
-          2. Create a new App → copy the App ID → replace admob_app_id
-          3. Create a Banner Ad Unit → replace admob_banner_main and admob_banner_timer
-        The IDs below are Google's official TEST IDs – safe for development only.
+        Production IDs. Debug builds still receive test ads because the test devices
+        are registered via RequestConfiguration in MainActivity / TimerActivity.
+        Google test IDs (for reference): app ca-app-pub-3940256099942544~3347511913,
+        banner ca-app-pub-3940256099942544/6300978111
     -->
-    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511913</string>
-    <string name="admob_banner_main" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="admob_banner_timer" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_app_id" translatable="false">ca-app-pub-3124409228089304~7274551059</string>
+    <string name="admob_banner_main" translatable="false">ca-app-pub-3124409228089304/3457681584</string>
+    <string name="admob_banner_timer" translatable="false">ca-app-pub-3124409228089304/2687525390</string>
 
 </resources>

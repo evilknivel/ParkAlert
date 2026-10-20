@@ -7,8 +7,8 @@
 - [ ] `changelog.txt` updated in `playstore-metadata/de-DE/` and `playstore-metadata/en-US/`
 - [ ] Signed AAB built: `.\gradlew.bat bundleRelease` (requires `keystore.properties`)
 - [ ] `TESTING.md` checklist completed
-- [ ] Real AdMob App ID in strings.xml
-- [ ] Real AdMob Banner IDs in strings.xml (`admob_banner_main`, `admob_banner_timer`)
+- [x] Real AdMob App ID in strings.xml
+- [x] Real AdMob Banner IDs in strings.xml (`admob_banner_main`, `admob_banner_timer`)
 - [ ] AdMob test-device IDs in `MainActivity` / `TimerActivity` still wrapped in `BuildConfig.DEBUG` (or removed)
 - [ ] `play-services-ads` and `user-messaging-platform` updated to latest stable (TODOs in `app/build.gradle`)
 - [ ] Privacy policy URL: https://evilknivel.github.io/parkalert/

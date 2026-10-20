@@ -2,7 +2,6 @@
 <!--
     Banner ad added at the bottom. btnReset is now constrained to the top of the
     AdView rather than the bottom of the parent so it sits just above the ad.
-    TODO: Replace test ad unit ID in strings.xml before publishing.
 -->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -92,8 +91,7 @@
 
     <!--
         Banner ad – pinned to screen bottom.
-        Test banner ID: ca-app-pub-3940256099942544/6300978111
-        TODO: Replace with real AdMob banner ID in strings.xml before publishing.
+        Ad unit ID: admob_banner_timer in res/values/strings.xml
     -->
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"

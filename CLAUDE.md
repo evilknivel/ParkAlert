@@ -8,7 +8,7 @@ ParkAlert (repo folder `ParkTimer`) — Android parking timer for supermarket ca
 
 Version, SDK levels and dependencies live in `app/build.gradle` (currently compile/target SDK 36, min SDK 26; AGP 8.11, Gradle 8.13) — the single source of truth. When bumping the version, also update the version mentions in `README.md` and `RELEASE_CHECKLIST.md`.
 
-The privacy policy exists three times and must stay in sync: `docs/index.md` (GitHub Pages, auto-deployed by `pages.yml` on push to `master`/`main`), `app/src/main/assets/privacy_policy_de.html` and `privacy_policy_en.html` (offline in-app).
+The privacy policy exists three times and must stay in sync: `privacy-policy.html` in the repo root (served by GitHub Pages from `master`, root folder, at https://evilknivel.github.io/ParkAlert/privacy-policy.html — the URL entered in Play Console), `app/src/main/assets/privacy_policy_de.html` and `privacy_policy_en.html` (offline in-app).
 
 ## Commands
 
@@ -25,7 +25,7 @@ Windows (primary dev environment):
 - No tests exist yet (`junit` is declared, but there is no `app/src/test`). Once added: `.\gradlew.bat test --tests "de.parkalert.app.SomeTest"`.
 - Release signing reads `keystore.properties` (`storeFile`, `storePassword`, `keyAlias`, `keyPassword`) at the repo root. It and `*.jks` are gitignored — never commit them.
 - Release builds use R8 (`minifyEnabled` + `shrinkResources`); check `app/proguard-rules.pro` when adding reflection-based or Car App code.
-- CI (`.github/workflows/build.yml`) only runs `assembleDebug` on push/PR to `main`/`master`. `pages.yml` publishes `docs/` (the privacy policy site) to GitHub Pages.
+- CI (`.github/workflows/build.yml`) only runs `assembleDebug` on push/PR to `main`/`master`. The Gradle wrapper (`gradlew`, `gradlew.bat`, `gradle-wrapper.jar`) is committed; regenerate it with `gradlew.bat wrapper --gradle-version X` instead of editing it by hand.
 - Android Auto testing: run the Desktop Head Unit (`$ANDROID_SDK_ROOT/extras/google/auto/desktop-head-unit`) with "Unknown sources" on in Android Auto developer settings.
 
 ## Architecture

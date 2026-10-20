@@ -46,6 +46,6 @@ Windows (primary dev environment):
 ## Conventions
 
 - Version bumps edit `versionCode`/`versionName` in `app/build.gradle` and are committed as `chore: bump version to X.Y (versionCode N)`. Play Store listing text lives in `playstore-metadata/{de-DE,en-US}/` (update `changelog.txt` per release).
-- Work happens on `dev`; `master` is the main/PR branch.
+- Work happens on `master` (the `dev` branch was merged and deleted after 1.4); use short-lived feature branches if needed.
 - Before a release, go through `TESTING.md` (consent flow, ad loading, no ads on Auto, DE/EN UI) and `RELEASE_CHECKLIST.md`.
 - From CONTRIBUTING.md: keep Activities/Services thin, and leave no `Log.d` in production code paths.

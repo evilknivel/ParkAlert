@@ -48,6 +48,8 @@
     <string name="car_timer_overtime">🚨 +%1$s überfällig!</string>
     <string name="car_started_at">Gestartet: %1$s Uhr</string>
     <string name="car_ended_at">Abgelaufen: %1$s Uhr</string>
+    <string name="car_park_until">Parken bis: %1$s Uhr</string>
+    <string name="car_minutes">%1$d Min.</string>
     <string name="car_timer_already_running">Timer läuft bereits – noch %1$d Min.\nAktuellen Timer stoppen?</string>
 
     <!-- Settings screen -->

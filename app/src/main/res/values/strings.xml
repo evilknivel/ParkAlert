@@ -52,6 +52,8 @@
     <string name="car_timer_overtime">🚨 +%1$s overtime!</string>
     <string name="car_started_at">Started: %1$s</string>
     <string name="car_ended_at">Expired: %1$s</string>
+    <string name="car_park_until">Park until: %1$s</string>
+    <string name="car_minutes">%1$d min</string>
     <string name="car_timer_already_running">Timer already running – %1$d min remaining.\nStop the current timer?</string>
 
     <!-- Settings screen -->

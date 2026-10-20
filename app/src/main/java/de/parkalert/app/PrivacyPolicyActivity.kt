@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.graphics.Color
+import androidx.activity.SystemBarStyle
+import androidx.activity.enableEdgeToEdge
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -31,9 +34,14 @@ class PrivacyPolicyActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Blue toolbar sits behind the status bar → light status bar icons
+        enableEdgeToEdge(statusBarStyle = SystemBarStyle.dark(Color.TRANSPARENT))
         super.onCreate(savedInstanceState)
         binding = ActivityPrivacyPolicyBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Toolbar extends behind the status bar; the root keeps content above the nav bar.
+        binding.toolbar.applySystemBarInsets(top = true, bottom = false)
+        binding.root.applySystemBarInsets(top = false, bottom = true)
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {

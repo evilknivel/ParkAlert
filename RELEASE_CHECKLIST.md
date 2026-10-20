@@ -3,7 +3,7 @@
 ## Before submitting to Play Store:
 
 ### App
-- [ ] `versionCode` / `versionName` in `app/build.gradle` bumped (current: 13 / 1.3) — must be higher than the last upload to Play Console
+- [ ] `versionCode` / `versionName` in `app/build.gradle` bumped (current: 14 / 1.4) — must be higher than the last upload to Play Console
 - [ ] `changelog.txt` updated in `playstore-metadata/de-DE/` and `playstore-metadata/en-US/`
 - [ ] Signed AAB built: `.\gradlew.bat bundleRelease` (requires `keystore.properties`)
 - [ ] `TESTING.md` checklist completed

@@ -11,7 +11,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/platform-Android-brightgreen" alt="Platform: Android"/>
   <img src="https://img.shields.io/badge/min%20SDK-26%20(Android%208.0)-blue" alt="Min SDK 26"/>
-  <img src="https://img.shields.io/badge/version-1.3-orange" alt="Version 1.3"/>
+  <img src="https://img.shields.io/badge/version-1.4-orange" alt="Version 1.4"/>
   <img src="https://img.shields.io/badge/status-Play%20Console%20testing-yellow" alt="Status: Play Console testing"/>
 </p>
 
@@ -21,7 +21,7 @@
 >
 > **EN:** Free parking timer for supermarket car parks with Android Auto support and full multilingual (German / English) UI.
 
-**Package:** `de.parkalert.app` &nbsp;|&nbsp; **Min SDK:** 26 (Android 8.0) &nbsp;|&nbsp; **Target SDK:** 36 &nbsp;|&nbsp; **Version:** 1.3 (versionCode 13)
+**Package:** `de.parkalert.app` &nbsp;|&nbsp; **Min SDK:** 26 (Android 8.0) &nbsp;|&nbsp; **Target SDK:** 36 &nbsp;|&nbsp; **Version:** 1.4 (versionCode 14)
 
 ---
 

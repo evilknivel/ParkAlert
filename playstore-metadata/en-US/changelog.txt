@@ -1,1 +1,3 @@
-Initial release
+• Support for Android 16
+• Android Auto: clearer display with remaining minutes and "park until" time
+• Layout adapted to modern edge-to-edge displays

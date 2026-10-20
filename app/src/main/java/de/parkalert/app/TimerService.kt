@@ -69,11 +69,11 @@ class TimerService : Service() {
         TimerState.remainingMinutes = TimerState.durationMinutes
 
         val notification = buildTimerNotification(durationMillis, currentState)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             startForeground(
                 Constants.NOTIFICATION_ID_TIMER,
                 notification,
-                ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE
             )
         } else {
             startForeground(Constants.NOTIFICATION_ID_TIMER, notification)

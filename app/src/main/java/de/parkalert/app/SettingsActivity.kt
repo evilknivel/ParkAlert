@@ -3,6 +3,9 @@ package de.parkalert.app
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.graphics.Color
+import androidx.activity.SystemBarStyle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import de.parkalert.app.databinding.ActivitySettingsBinding
@@ -30,9 +33,14 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Blue toolbar sits behind the status bar → light status bar icons
+        enableEdgeToEdge(statusBarStyle = SystemBarStyle.dark(Color.TRANSPARENT))
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Toolbar extends behind the status bar; the root keeps content above the nav bar.
+        binding.toolbar.applySystemBarInsets(top = true, bottom = false)
+        binding.root.applySystemBarInsets(top = false, bottom = true)
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {

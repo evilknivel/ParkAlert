@@ -3,11 +3,15 @@
 ## Before submitting to Play Store:
 
 ### App
-- [ ] Version code: 1
-- [ ] Version name: 1.0.0
-- [ ] Real AdMob App ID in strings.xml
-- [ ] Real AdMob Banner ID in strings.xml
-- [ ] Privacy policy URL: https://evilknivel.github.io/parkalert/
+- [ ] `versionCode` / `versionName` in `app/build.gradle` bumped (current: 14 / 1.4) — must be higher than the last upload to Play Console
+- [ ] `changelog.txt` updated in `playstore-metadata/de-DE/` and `playstore-metadata/en-US/`
+- [ ] Signed AAB built: `.\gradlew.bat bundleRelease` (requires `keystore.properties`)
+- [ ] `TESTING.md` checklist completed
+- [x] Real AdMob App ID in strings.xml
+- [x] Real AdMob Banner IDs in strings.xml (`admob_banner_main`, `admob_banner_timer`)
+- [ ] AdMob test-device IDs in `MainActivity` / `TimerActivity` still wrapped in `BuildConfig.DEBUG` (or removed)
+- [ ] `play-services-ads` and `user-messaging-platform` updated to latest stable (TODOs in `app/build.gradle`)
+- [ ] Privacy policy URL: https://evilknivel.github.io/ParkAlert/privacy-policy.html (served from `privacy-policy.html` on `master`; GitHub Pages source = master, root)
 - [ ] Tested on real device (Samsung Galaxy S20 FE)
 - [ ] Android Auto tested via DHU
 

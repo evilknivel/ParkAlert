@@ -24,8 +24,19 @@ import de.parkalert.app.TimerState
  */
 class SelectDurationScreen(carContext: CarContext) : Screen(carContext) {
 
-    private val durations = listOf(15, 30, 60, 90, 120)
+    private val durations = listOf(
+        15 to R.string.minutes_15,
+        30 to R.string.minutes_30,
+        60 to R.string.minutes_60,
+        90 to R.string.minutes_90,
+        120 to R.string.minutes_120
+    )
     private var timerReceiver: BroadcastReceiver? = null
+
+    // What the current template shows. The service broadcasts every second, but the
+    // host throttles template updates, so we only invalidate when this changes.
+    private var renderedRunning = TimerState.isRunning
+    private var renderedMinutes = TimerState.remainingMinutes
 
     init {
         timerReceiver = object : BroadcastReceiver() {
@@ -36,7 +47,11 @@ class SelectDurationScreen(carContext: CarContext) : Screen(carContext) {
                 if (state == Constants.TIMER_STATE_STOPPED) {
                     TimerState.isRunning = false
                 }
-                invalidate()
+                if (TimerState.isRunning != renderedRunning ||
+                    TimerState.remainingMinutes != renderedMinutes
+                ) {
+                    invalidate()
+                }
             }
         }
         ContextCompat.registerReceiver(
@@ -54,18 +69,13 @@ class SelectDurationScreen(carContext: CarContext) : Screen(carContext) {
         })
     }
 
-    private fun createParkingIcon(): CarIcon {
-        return try {
-            CarIcon.Builder(
-                IconCompat.createWithResource(carContext, R.drawable.ic_parking)
-            ).build()
-        } catch (e: Exception) {
-            android.util.Log.e("ParkAlert_AUTO", "Icon load failed, using APP_ICON", e)
-            CarIcon.APP_ICON
-        }
-    }
+    private fun createParkingIcon(): CarIcon =
+        CarIcon.Builder(IconCompat.createWithResource(carContext, R.drawable.ic_parking)).build()
 
     override fun onGetTemplate(): Template {
+        renderedRunning = TimerState.isRunning
+        renderedMinutes = TimerState.remainingMinutes
+
         if (TimerState.isRunning) {
             val stopAction = Action.Builder()
                 .setTitle(carContext.getString(R.string.btn_stop))
@@ -88,34 +98,25 @@ class SelectDurationScreen(carContext: CarContext) : Screen(carContext) {
                 .build()
         }
 
-        return try {
-            val items = durations.map { minutes ->
-                val label = "$minutes Min"
-                GridItem.Builder()
-                    .setTitle(label)
-                    .setImage(createParkingIcon(), GridItem.IMAGE_TYPE_ICON)
-                    .setOnClickListener {
-                        screenManager.push(TimerScreen(carContext, minutes))
-                    }
-                    .build()
+        val icon = createParkingIcon()
+        val itemList = ItemList.Builder().apply {
+            durations.forEach { (minutes, labelRes) ->
+                addItem(
+                    GridItem.Builder()
+                        .setTitle(carContext.getString(labelRes))
+                        .setImage(icon, GridItem.IMAGE_TYPE_ICON)
+                        .setOnClickListener {
+                            screenManager.push(TimerScreen(carContext, minutes))
+                        }
+                        .build()
+                )
             }
+        }.build()
 
-            val itemList = ItemList.Builder().apply {
-                items.forEach { addItem(it) }
-            }.build()
-
-            GridTemplate.Builder()
-                .setTitle(carContext.getString(R.string.app_name))
-                .setHeaderAction(Action.APP_ICON)
-                .setSingleList(itemList)
-                .setLoading(false)
-                .build()
-        } catch (e: Exception) {
-            android.util.Log.e("ParkAlert_AUTO", "Template error", e)
-            MessageTemplate.Builder("Error: ${e.message}")
-                .setTitle("ParkAlert")
-                .setHeaderAction(Action.APP_ICON)
-                .build()
-        }
+        return GridTemplate.Builder()
+            .setTitle(carContext.getString(R.string.app_name))
+            .setHeaderAction(Action.APP_ICON)
+            .setSingleList(itemList)
+            .build()
     }
 }

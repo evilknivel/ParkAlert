@@ -1,11 +1,11 @@
-# Contributing to ParkTimer
+# Contributing to ParkAlert
 
 Thank you for considering a contribution! Here is everything you need to get started.
 
 ## Development setup
 
 1. Install **Android Studio** (Hedgehog or newer).
-2. Clone the repository and open the `ParkTimer` folder in Android Studio.
+2. Clone the repository (`https://github.com/evilknivel/ParkAlert.git`) and open the project folder in Android Studio.
 3. Android Studio will sync Gradle and download all dependencies automatically.
 4. Connect a physical device or start an AVD (API 26+).
 5. Run `▶ Run 'app'` or use `./gradlew installDebug` from the terminal.

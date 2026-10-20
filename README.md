@@ -21,7 +21,7 @@
 >
 > **EN:** Free parking timer for supermarket car parks with Android Auto support and full multilingual (German / English) UI.
 
-**Package:** `de.parkalert.app` &nbsp;|&nbsp; **Min SDK:** 26 (Android 8.0) &nbsp;|&nbsp; **Target SDK:** 36 &nbsp;|&nbsp; **Version:** 1.3 (versionCode 12)
+**Package:** `de.parkalert.app` &nbsp;|&nbsp; **Min SDK:** 26 (Android 8.0) &nbsp;|&nbsp; **Target SDK:** 36 &nbsp;|&nbsp; **Version:** 1.3 (versionCode 13)
 
 ---
 

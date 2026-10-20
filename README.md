@@ -235,16 +235,15 @@ ParkAlert/
 │       ├── values-de/                     # German string overrides
 │       ├── values-en/                     # Explicit English strings
 │       └── xml/automotive_app_desc.xml
-├── docs/                                  # GitHub Pages site (online privacy policy)
-│   ├── index.md                           # Privacy policy DE / EN
+├── docs/
 │   └── ic_launcher_playstore.png          # 512×512 Play Store icon
+├── privacy-policy.html                    # Online privacy policy DE / EN (GitHub Pages, master root)
 ├── playstore-metadata/
 │   ├── de-DE/                             # German Play Store listing
 │   └── en-US/                             # English Play Store listing
 ├── TESTING.md                             # GDPR + AdMob test checklist
 ├── RELEASE_CHECKLIST.md                   # Play Store submission checklist
 ├── .github/workflows/build.yml            # CI: builds ParkAlert-debug APK
-├── .github/workflows/pages.yml            # CI: deploys docs/ to GitHub Pages
 ├── build.gradle                           # Project-level Gradle
 ├── app/build.gradle                       # App-level (namespace: de.parkalert.app)
 └── settings.gradle                        # rootProject.name = "ParkAlert"

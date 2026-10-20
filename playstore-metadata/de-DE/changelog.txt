@@ -1,1 +1,3 @@
-Erste Version
+• Unterstützung für Android 16
+• Android Auto: übersichtlichere Anzeige mit Restminuten und „Parken bis“-Uhrzeit
+• Darstellung an moderne Displays angepasst (randlose Anzeige)

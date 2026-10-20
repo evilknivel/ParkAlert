@@ -11,7 +11,7 @@ title: ParkAlert - Datenschutzerklärung / Privacy Policy
 
 **Verantwortlicher:** Frank-Martin Holz, Hamburg, Deutschland
 **Kontakt:** fmholz@googlemail.com
-**Stand:** April 2026
+**Stand:** Oktober 2026
 
 ### 1. Welche Daten werden erhoben?
 
@@ -20,6 +20,7 @@ Die App nutzt Google AdMob für Werbeanzeigen. AdMob kann
 folgende Daten erheben:
 - Geräte-ID (Advertising ID)
 - IP-Adresse
+- Ungefährer Standort (auf Basis der IP-Adresse)
 - Nutzungsverhalten in der App
 
 ### 2. Zweck der Datenverarbeitung
@@ -31,7 +32,7 @@ Die Daten werden verwendet für:
 ### 3. Rechtsgrundlage
 
 Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)
-TTDSG § 25
+§ 25 TDDDG (Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz)
 
 ### 4. Ihre Rechte
 
@@ -67,7 +68,7 @@ https://datenschutz.hamburg.de
 
 **Controller:** Frank-Martin Holz, Hamburg, Germany
 **Contact:** fmholz@googlemail.com
-**Last updated:** April 2026
+**Last updated:** October 2026
 
 ### 1. Data collected
 
@@ -75,6 +76,7 @@ ParkAlert itself does not store any personal data.
 The app uses Google AdMob for advertising. AdMob may collect:
 - Device ID (Advertising ID)
 - IP address
+- Approximate location (derived from the IP address)
 - App usage behavior
 
 ### 2. Purpose
@@ -86,6 +88,7 @@ Data is used for:
 ### 3. Legal basis
 
 Art. 6(1)(a) GDPR (Consent)
+§ 25 TDDDG (German Telecommunications Digital Services Data Protection Act)
 
 ### 4. Your rights
 
@@ -105,3 +108,9 @@ settings under "Privacy & Consent".
 
 More information:
 https://policies.google.com/privacy
+
+### 7. Supervisory authority
+
+Hamburg Commissioner for Data Protection and
+Freedom of Information
+https://datenschutz.hamburg.de

@@ -11,7 +11,7 @@
 - [x] Real AdMob Banner IDs in strings.xml (`admob_banner_main`, `admob_banner_timer`)
 - [ ] AdMob test-device IDs in `MainActivity` / `TimerActivity` still wrapped in `BuildConfig.DEBUG` (or removed)
 - [ ] `play-services-ads` and `user-messaging-platform` updated to latest stable (TODOs in `app/build.gradle`)
-- [ ] Privacy policy URL: https://evilknivel.github.io/parkalert/
+- [ ] Privacy policy URL: https://evilknivel.github.io/ParkAlert/privacy-policy.html (served from `privacy-policy.html` on `master`; GitHub Pages source = master, root)
 - [ ] Tested on real device (Samsung Galaxy S20 FE)
 - [ ] Android Auto tested via DHU
 

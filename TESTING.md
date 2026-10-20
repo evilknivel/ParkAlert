@@ -77,7 +77,13 @@ AdMob integration, and multilingual behaviour.
   - Android Auto strings in English
 
 - [ ] **Language switch**: Change device language while app is in background and
-      reopen – UI should reflect the new language immediately.
+      reopen – UI should reflect the new language immediately (only with
+      Settings → Language set to "Automatic").
+
+- [ ] **In-app language override**: In Settings → Language select "Deutsch" on an
+      English device (and "English" on a German device). App restarts and the UI,
+      privacy policy and notifications use the selected language. Switching back to
+      "Automatic" restores the device language.
 
 ### How to test language on Android Emulator
 

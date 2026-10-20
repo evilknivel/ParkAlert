@@ -1,46 +1,43 @@
-🅿 ParkAlert – Nie wieder Knöllchen auf dem Supermarkt-Parkplatz!
+ParkAlert – der einfache Parkzeit-Timer für Supermarkt- und Kurzzeitparkplätze.
 
-Kennst du das? Du gehst kurz einkaufen bei Lidl, Aldi, Rewe, Edeka oder Kaufland – und wenn du zurückkommst, klebt ein Strafzettel unter dem Scheibenwischer. ParkAlert erinnert dich rechtzeitig, bevor die Parkzeit abläuft.
+Kurz einkaufen, und plötzlich ist die erlaubte Parkdauer vorbei? ParkAlert erinnert dich rechtzeitig, bevor deine Parkzeit abläuft – mit einer Warnung 10 Minuten vorher und einem Alarm bei Ablauf.
 
 ──────────────────────────────
-WIE ES FUNKTIONIERT
+SO FUNKTIONIERT ES
 ──────────────────────────────
-1. App öffnen
-2. Parkdauer auswählen: 15, 30, 60, 90 oder 120 Minuten
-3. Einkaufen gehen – ParkAlert läuft im Hintergrund
-4. Bei 10 Minuten Restzeit: Warnung!
-5. Bei 0 Minuten: Alarm + Vibration
+1. App öffnen – oder ParkAlert direkt in Android Auto starten
+2. Parkdauer wählen: 15, 30, 60, 90 oder 120 Minuten
+3. Erledigungen machen – der Timer läuft im Hintergrund weiter
+4. 10 Minuten vor Ablauf: Warnung
+5. Bei Ablauf: Alarm-Benachrichtigung mit Vibration
 
 ──────────────────────────────
 FUNKTIONEN
 ──────────────────────────────
-✅ 5 Schnellwahl-Buttons: 15 / 30 / 60 / 90 / 120 Minuten
-✅ Großer Countdown-Bildschirm – gut lesbar auch in der Sonne
-✅ Farbwechsel: Grün → Gelb (10 Min) → Rot (abgelaufen)
-✅ Läuft weiter bei gesperrtem Bildschirm (Foreground Service)
-✅ Alarm-Benachrichtigung + Vibration bei Ablauf
-✅ Überfällig-Anzeige: zeigt wie lange die Zeit schon abgelaufen ist
-✅ Android Auto-Unterstützung
-✅ Kostenlos – werbefinanziert mit DSGVO-konformer Einwilligung
-✅ Kein Account, keine Registrierung, keine Cloud
+✅ 5 Schnellwahl-Tasten: 15 / 30 / 60 / 90 / 120 Minuten
+✅ Großer, gut lesbarer Countdown
+✅ Farbwechsel: Blau (läuft) → Gelb (noch 10 Min.) → Rot (abgelaufen)
+✅ Läuft weiter bei gesperrtem Bildschirm
+✅ Alarm-Benachrichtigung und Vibration bei Ablauf
+✅ Überzeit-Anzeige: zeigt, wie lange die Parkzeit schon abgelaufen ist
+✅ Start- und Ablaufzeit auf einen Blick
+✅ Android Auto: Timer beim Einparken mit einem Tipp starten
+✅ Deutsch und Englisch
+✅ Kein Konto, keine Registrierung, keine Cloud
 
 ──────────────────────────────
-PERFEKT FÜR
+IDEAL FÜR
 ──────────────────────────────
-• Supermarkt-Parkplätze: Lidl, Aldi, Rewe, Edeka, Kaufland, Netto, Penny
-• Parkzonen mit Parkscheibe / Parkuhr
-• Kurzzeit-Parkplätze in der Innenstadt
-• Überall wo eine maximale Parkdauer gilt
-• Einkaufszentren und Retail-Parks
+• Supermarkt- und Kundenparkplätze mit Höchstparkdauer
+• Parkzonen mit Parkscheibe
+• Kurzzeitparkplätze in der Innenstadt
+• Einkaufszentren und Fachmarktzentren
 
 ──────────────────────────────
 DATENSCHUTZ
 ──────────────────────────────
-Die App zeigt Werbung über Google AdMob. Beim ersten Start wirst du nach deiner Einwilligung gefragt (DSGVO / IAB TCF 2.2). Du kannst jederzeit Nein sagen – die App funktioniert auch ohne Einwilligung vollständig. Deine Einwilligung kann jederzeit in den Einstellungen geändert werden.
+ParkAlert ist kostenlos und finanziert sich über Werbebanner von Google AdMob. Beim ersten Start wirst du um deine Einwilligung gebeten (DSGVO / IAB TCF 2.2). Du kannst ablehnen – die App funktioniert dann mit nicht-personalisierter Werbung vollständig weiter. Deine Auswahl kannst du jederzeit in den Einstellungen ändern.
 
-Keine Standortdaten, keine Nutzungsverfolgung durch den App-Entwickler.
+ParkAlert selbst erhebt keine Standortdaten und speichert keine personenbezogenen Daten. Google AdMob kann zur Werbeausspielung Daten wie die Werbe-ID, die IP-Adresse und einen daraus abgeleiteten ungefähren Standort verarbeiten. Details findest du in der Datenschutzerklärung.
 
-──────────────────────────────
-KEYWORDS
-──────────────────────────────
-Parkzeit, Parkuhr, Parkwächter, Parkdepot, Knöllchen, Strafzettel, Parkplatz, Supermarkt, Einkaufen, 90 Minuten, Lidl, Aldi, Rewe, Edeka, Kaufland, Netto, Penny, Parkzeit-Timer, Parkzeit-Alarm, kostenlos, Android Auto
+In Android Auto wird keine Werbung angezeigt.

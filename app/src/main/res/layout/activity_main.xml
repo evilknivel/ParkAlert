@@ -121,9 +121,7 @@
 
     <!--
         Banner ad – pinned to screen bottom.
-        TODO: Replace test ad unit ID in strings.xml with your real AdMob banner ID
-              before publishing to the Play Store.
-        Test banner ID: ca-app-pub-3940256099942544/6300978111
+        Ad unit ID: admob_banner_main in res/values/strings.xml
     -->
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"

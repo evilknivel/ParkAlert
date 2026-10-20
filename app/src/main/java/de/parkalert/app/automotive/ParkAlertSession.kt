@@ -10,8 +10,5 @@ import androidx.car.app.Session
  */
 class ParkAlertSession : Session() {
 
-    override fun onCreateScreen(intent: Intent): Screen {
-        android.util.Log.d("ParkAlert_AUTO", "onCreateScreen() called")
-        return SelectDurationScreen(carContext)
-    }
+    override fun onCreateScreen(intent: Intent): Screen = SelectDurationScreen(carContext)
 }

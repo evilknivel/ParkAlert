@@ -13,13 +13,18 @@ import androidx.lifecycle.LifecycleOwner
 import de.parkalert.app.Constants
 import de.parkalert.app.R
 import de.parkalert.app.TimerService
+import de.parkalert.app.TimerState
 import java.util.Calendar
 
 /**
- * Car app screen that shows the countdown timer after a duration has been selected.
+ * Car app screen that shows the parking timer after a duration has been selected.
  *
- * Updates via broadcast from [TimerService]. A "Stop" action lets the user
- * cancel the timer and return to [SelectDurationScreen].
+ * Shows whole minutes plus the planned end time instead of a seconds countdown:
+ * a ticking display distracts the driver, and the host throttles template
+ * updates anyway. The template is only invalidated when its text changes,
+ * i.e. at most once per minute or on a state change.
+ *
+ * A "Stop" action cancels the timer and returns to [SelectDurationScreen].
  * No ads are shown – Google Car App policy prohibits ads on Auto.
  */
 class TimerScreen(
@@ -29,9 +34,10 @@ class TimerScreen(
 
     private var remainingMillis: Long = durationMinutes * 60_000L
     private var timerState: Int = Constants.TIMER_STATE_RUNNING
-    private var startTimeMillis: Long = 0L
+    private var startTimeMillis: Long = System.currentTimeMillis()
     private var endTimeMillis: Long = 0L
     private var timerReceiver: BroadcastReceiver? = null
+    private var renderedMessage: String? = null
 
     init {
         val serviceIntent = Intent(carContext, TimerService::class.java).apply {
@@ -52,9 +58,17 @@ class TimerScreen(
             override fun onReceive(context: Context, intent: Intent) {
                 remainingMillis = intent.getLongExtra(Constants.EXTRA_REMAINING_MILLIS, 0L)
                 timerState = intent.getIntExtra(Constants.EXTRA_TIMER_STATE, Constants.TIMER_STATE_RUNNING)
-                startTimeMillis = intent.getLongExtra(Constants.EXTRA_START_TIME_MILLIS, 0L)
+                intent.getLongExtra(Constants.EXTRA_START_TIME_MILLIS, 0L)
+                    .takeIf { it > 0L }?.let { startTimeMillis = it }
                 endTimeMillis = intent.getLongExtra(Constants.EXTRA_END_TIME_MILLIS, 0L)
-                invalidate()
+
+                if (timerState == Constants.TIMER_STATE_STOPPED) {
+                    TimerState.isRunning = false
+                    screenManager.pop()
+                    return
+                }
+
+                if (buildMessage() != renderedMessage) invalidate()
             }
         }
         val filter = IntentFilter(Constants.ACTION_TIMER_UPDATE)
@@ -70,40 +84,40 @@ class TimerScreen(
         timerReceiver = null
     }
 
-    override fun onGetTemplate(): Template {
-        // Timestamps appended to each message if available
-        val startStr = if (startTimeMillis > 0L)
-            "\n" + carContext.getString(R.string.car_started_at, formatClock(startTimeMillis))
+    private fun buildMessage(): String {
+        val startStr = "\n" + carContext.getString(R.string.car_started_at, formatClock(startTimeMillis))
+        val endStr = if (endTimeMillis > 0L)
+            "\n" + carContext.getString(R.string.car_ended_at, formatClock(endTimeMillis))
         else ""
+        val parkUntilStr = "\n" + carContext.getString(
+            R.string.car_park_until,
+            formatClock(startTimeMillis + durationMinutes * 60_000L)
+        )
 
-        val message = when {
-            remainingMillis < 0 -> {
-                val overtime = formatTime(-remainingMillis)
-                val endStr = if (endTimeMillis > 0L)
-                    "\n" + carContext.getString(R.string.car_ended_at, formatClock(endTimeMillis))
-                else ""
-                carContext.getString(R.string.car_timer_overtime, overtime) + endStr + startStr
-            }
-            timerState == Constants.TIMER_STATE_ALERT -> {
-                val endStr = if (endTimeMillis > 0L)
-                    "\n" + carContext.getString(R.string.car_ended_at, formatClock(endTimeMillis))
-                else ""
+        return when {
+            remainingMillis < 0 ->
+                carContext.getString(R.string.car_timer_overtime, formatMinutes(-remainingMillis)) +
+                    endStr + startStr
+            timerState == Constants.TIMER_STATE_ALERT ->
                 carContext.getString(R.string.car_timer_alert_expired) + endStr + startStr
-            }
-            timerState == Constants.TIMER_STATE_WARNING -> {
-                val timeText = formatTime(remainingMillis)
-                carContext.getString(R.string.car_timer_warning, timeText) + startStr
-            }
-            else -> {
-                val timeText = formatTime(remainingMillis)
-                carContext.getString(R.string.car_timer_running, timeText) + startStr
-            }
+            timerState == Constants.TIMER_STATE_WARNING ->
+                carContext.getString(R.string.car_timer_warning, formatMinutes(remainingMillis)) +
+                    parkUntilStr
+            else ->
+                carContext.getString(R.string.car_timer_running, formatMinutes(remainingMillis)) +
+                    parkUntilStr + startStr
         }
+    }
+
+    override fun onGetTemplate(): Template {
+        val message = buildMessage()
+        renderedMessage = message
 
         val stopAction = Action.Builder()
             .setTitle(carContext.getString(R.string.btn_stop))
             .setOnClickListener {
                 carContext.stopService(Intent(carContext, TimerService::class.java))
+                TimerState.isRunning = false
                 screenManager.pop()
             }
             .build()
@@ -115,11 +129,10 @@ class TimerScreen(
             .build()
     }
 
-    private fun formatTime(millis: Long): String {
-        val totalSec = millis / 1_000
-        val min = totalSec / 60
-        val sec = totalSec % 60
-        return "%02d:%02d".format(min, sec)
+    /** Whole minutes, rounded up so "1 Min" is shown until the time is really up. */
+    private fun formatMinutes(millis: Long): String {
+        val minutes = ((millis + 59_999L) / 60_000L).coerceAtLeast(1L)
+        return carContext.getString(R.string.car_minutes, minutes.toInt())
     }
 
     private fun formatClock(millis: Long): String {

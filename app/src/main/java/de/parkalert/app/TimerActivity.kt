@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Color
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -14,19 +15,37 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 import de.parkalert.app.databinding.ActivityTimerBinding
 import java.util.Calendar
+import java.util.Locale
 
 class TimerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTimerBinding
+
+    override fun attachBaseContext(newBase: Context) {
+        val prefs = newBase.getSharedPreferences("parkalert_prefs", Context.MODE_PRIVATE)
+        val lang = prefs.getString("selected_language", "auto") ?: "auto"
+        if (lang == "auto") {
+            super.attachBaseContext(newBase)
+            return
+        }
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = newBase.resources.configuration
+        config.setLocale(locale)
+        val context = newBase.createConfigurationContext(config)
+        super.attachBaseContext(context)
+    }
     private var timerReceiver: BroadcastReceiver? = null
 
     private var startTimeMillis: Long = 0L
     private var endTimeMillis: Long = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         binding = ActivityTimerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.root.applySystemBarInsets()
 
         binding.btnReset.setOnClickListener { stopTimerAndFinish() }
         loadBannerAdIfReady()
@@ -147,7 +166,10 @@ class TimerActivity : AppCompatActivity() {
         if (!BuildConfig.DEBUG && !ConsentManager.getInstance(this).canRequestAds) return
 
         if (BuildConfig.DEBUG) {
-            val testDeviceIds = listOf("7B05469EEF60FD8AB5044BCA30D236D7")
+            val testDeviceIds = listOf(
+                "7B05469EEF60FD8AB5044BCA30D236D7", // POCO X6 Pro
+                "9BF79F51187F166C3B5B5F8A88F35B13"  // Samsung Galaxy S20 FE
+            )
             val configuration = RequestConfiguration.Builder()
                 .setTestDeviceIds(testDeviceIds)
                 .build()

@@ -1,5 +1,6 @@
 package de.parkalert.app.automotive
 
+import android.content.pm.ApplicationInfo
 import androidx.car.app.CarAppService
 import androidx.car.app.Session
 import androidx.car.app.validation.HostValidator
@@ -14,19 +15,20 @@ import androidx.car.app.validation.HostValidator
 class ParkAlertCarAppService : CarAppService() {
 
     /**
-     * Allow all hosts during development.
-     * For production, replace with a SHA-256 allowlist of trusted host certificates.
+     * Debug builds accept any host (needed for the Desktop Head Unit).
+     * Release builds only accept the Google-signed Android Auto / Automotive hosts
+     * from the Car App Library's allowlist.
      */
-    override fun createHostValidator(): HostValidator =
-        HostValidator.ALLOW_ALL_HOSTS_VALIDATOR
-
-    override fun onCreate() {
-        super.onCreate()
-        android.util.Log.d("ParkAlert_AUTO", "CarAppService onCreate() called")
+    override fun createHostValidator(): HostValidator {
+        val isDebuggable = applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
+        return if (isDebuggable) {
+            HostValidator.ALLOW_ALL_HOSTS_VALIDATOR
+        } else {
+            HostValidator.Builder(applicationContext)
+                .addAllowedHosts(androidx.car.app.R.array.hosts_allowlist_sample)
+                .build()
+        }
     }
 
-    override fun onCreateSession(): Session {
-        android.util.Log.d("ParkAlert_AUTO", "onCreateSession() called")
-        return ParkAlertSession()
-    }
+    override fun onCreateSession(): Session = ParkAlertSession()
 }
